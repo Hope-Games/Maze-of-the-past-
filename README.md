@@ -32,5 +32,5 @@ Jogos inspiração:
 - Após derrotar o adversário, o jogador terá direito a coletar os atributos do derrotado;
 - Terá direito a comprar com “diamantes” poderes, para assim vencer cada partida;
 - Ao ser atingido com poderes, o jogador perderá uma vida. Ao total ele terá 3 vidas;
-- Se for derrotado em alguma batalha, ele prossegue no jogo. Se na última batalha, ele tiver vidas, ele retorna aonde perdeu;
+- Se for derrotado em alguma batalha, ele prossegue no jogo. Se na última batalha, ele tiver vidas, ele retorna aonde perdeu.
  
