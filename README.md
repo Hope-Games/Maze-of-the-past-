@@ -34,3 +34,6 @@ Jogos inspiração:
 - Ao ser atingido com poderes, o jogador perderá uma vida. Ao total ele terá 3 vidas;
 - Se for derrotado em alguma batalha, ele prossegue no jogo. Se na última batalha, ele tiver vidas, ele retorna aonde perdeu.
  
+## Objetivo
+
+Alcançar o diploma de conclusão do ensino médio, após inúmeras dificuldades encontradas durante o percurso. 
