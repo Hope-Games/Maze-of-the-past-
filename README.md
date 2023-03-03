@@ -37,3 +37,15 @@ Jogos inspiração:
 ## Objetivo
 
 Alcançar o diploma de conclusão do ensino médio, após inúmeras dificuldades encontradas durante o percurso. 
+
+
+## Receita
+
+- Compra de “diamantes”;
+- Versão premium;
+- Propagandas;
+- Venda do jogo de maneira personalizada.
+
+
+## Jogo ideal
+
