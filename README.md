@@ -4,7 +4,6 @@
 
     Uma turma de alunos do último ano do ensino médio está prestes a se formar e precisa do seu apoio para enfrentar os desafios que terá pela frente até a formatura, desafios esses que são representados por uma batalha com os professores. Cada parte precisará demonstrar seus conhecimentos e testar a sabedoria dos alunos, seja como professor cobrando o conhecimento ou como alunos mostrando todo o conhecimento passado. 
 
-<br>
 
 ## Referências
 
@@ -22,8 +21,6 @@ Jogos inspiração:
 - Stranger Things: 1984
 - Super Mario Run
 
-<br>
-
 ## Jogo Ideal
 
 Desde cedo, aprendemos a ler, escrever e falar, mas muitas vezes não somos ensinados sobre as complexidades da vida que estão por vir. É através de nossas próprias experiências, errando e acertando, que aprendemos a lidar com os desafios que surgem em nosso caminho. No entanto, se pudéssemos prever tudo o que aconteceria em cada fase de nossas vidas, será que seríamos capazes de lidar com isso de forma saudável? Algumas obras cinematográficas, como "Durante a Tormenta" e "Dark", podem ilustrar essa experiência complexa.
@@ -35,8 +32,6 @@ Por meio do "The Quest for Knowledge", queremos convidar a todos a participar de
 Você também pode optar por assumir o papel de professor e ajudar seus alunos a absorver todo o conhecimento que você passou a eles. Seu objetivo é garantir que eles se tornem ótimos profissionais e contribuam para a sociedade de forma positiva.
 
 Convidamos você a participar dessa batalha e experimentar o desafio de ser aluno ou professor. Você está pronto para aceitar esse desafio?
-
-<br> 
 
 ## Regras
 
@@ -52,13 +47,9 @@ Convidamos você a participar dessa batalha e experimentar o desafio de ser alun
 - Ao ser atingido com poderes, o jogador perderá uma vida. Ao total ele terá 3 vidas;
 - Se for derrotado em alguma batalha, ele prossegue no jogo. Se na última batalha, ele tiver vidas, ele retorna aonde perdeu.
  
- <br>
-
 ## Objetivo
 
 Alcançar o diploma de conclusão do ensino médio, após inúmeras dificuldades encontradas durante o percurso. 
-
-<br>
 
 ## Receita
 
