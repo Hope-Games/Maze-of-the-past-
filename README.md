@@ -2,7 +2,7 @@
 
 ## Premissa
 
-    Uma turma de alunos do último ano do ensino médio está prestes a se formar e precisa do seu apoio para enfrentar os desafios que terá pela frente até a formatura, desafios esses que são representados por uma batalha com os professores. Cada parte precisará demonstrar seus conhecimentos e testar a sabedoria dos alunos, seja como professor cobrando o conhecimento ou como alunos mostrando todo o conhecimento passado. 
+Uma turma de alunos do último ano do ensino médio está prestes a se formar e precisa do seu apoio para enfrentar os desafios que terá pela frente até a formatura, desafios esses que são representados por uma batalha com os professores. Cada parte precisará demonstrar seus conhecimentos e testar a sabedoria dos alunos, seja como professor cobrando o conhecimento ou como alunos mostrando todo o conhecimento passado. 
 
 
 ## Referências
