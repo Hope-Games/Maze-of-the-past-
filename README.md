@@ -23,11 +23,11 @@ Jogos inspiração:
 
 ## Jogo Ideal
 
-Desde cedo, aprendemos a ler, escrever e falar, mas muitas vezes não somos ensinados sobre as complexidades da vida que estão por vir. É através de nossas próprias experiências, errando e acertando, que aprendemos a lidar com os desafios que surgem em nosso caminho. No entanto, se pudéssemos prever tudo o que aconteceria em cada fase de nossas vidas, será que seríamos capazes de lidar com isso de forma saudável? Algumas obras cinematográficas, como "Durante a Tormenta" e "Dark", podem ilustrar essa experiência complexa.
+Desde cedo, aprendemos a ler, escrever e falar, mas muitas vezes não somos ensinados sobre as complexidades da vida que estão por vir. É através de nossas próprias experiências, errando e acertando, que aprendemos a lidar com os desafios que surgem em nosso caminho. No entanto, se pudéssemos prever tudo o que aconteceria em cada fase de nossas vidas, será que seríamos capazes de lidar com isso de forma saudável? Algumas obras cinematográficas, como *"Durante a Tormenta"* e *"Dark"*, podem ilustrar essa experiência complexa.
 
 Um dos medos mais comuns que enfrentamos durante nossa vida acadêmica é o de reprovar em alguma matéria. Esse medo pode levar a bloqueios e preconceitos em relação a determinados professores e suas matérias. Mas é importante lembrar que os professores também se preocupam em aprovar a maioria dos alunos. Eles estão lá para ensinar, formar grandes pessoas e contribuir para a sociedade formando ótimos profissionais.
 
-Por meio do "The Quest for Knowledge", queremos convidar a todos a participar de uma batalha entre aluno e professor. Não se trata de uma competição, mas sim de um trabalho em equipe. Criamos um jogo em que você pode se colocar no papel de um estudante prestes a se formar no Ensino Médio. Para chegar ao fim da caminhada e conseguir o diploma, você terá que enfrentar desafios e obstáculos que exigem conhecimentos adquiridos ao longo desses anos, além de lógica e habilidade.
+Por meio do *"The Quest for Knowledge"*, queremos convidar a todos a participar de uma batalha entre aluno e professor. Não se trata de uma competição, mas sim de um trabalho em equipe. Criamos um jogo em que você pode se colocar no papel de um estudante prestes a se formar no Ensino Médio. Para chegar ao fim da caminhada e conseguir o diploma, você terá que enfrentar desafios e obstáculos que exigem conhecimentos adquiridos ao longo desses anos, além de lógica e habilidade.
 
 Você também pode optar por assumir o papel de professor e ajudar seus alunos a absorver todo o conhecimento que você passou a eles. Seu objetivo é garantir que eles se tornem ótimos profissionais e contribuam para a sociedade de forma positiva.
 
