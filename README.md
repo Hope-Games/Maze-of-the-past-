@@ -6,7 +6,7 @@ Uma turma de alunos do último ano do ensino médio está prestes a se formar e 
 
 ## Jogo Ideal
 
-Desde cedo, aprendemos a ler, escrever e falar, mas muitas vezes não somos ensinados sobre as complexidades da vida que estão por vir. É através de nossas próprias experiências, errando e acertando, que aprendemos a lidar com os desafios que surgem em nosso caminho. No entanto, se pudéssemos prever tudo o que aconteceria em cada fase de nossas vidas, será que seríamos capazes de lidar com isso de forma saudável? Algumas obras cinematográficas, como *"Durante a Tormenta"* e *"Dark"*, podem ilustrar essa experiência complexa.
+Desde cedo, aprendemos a ler, escrever e falar, mas muitas vezes não somos ensinados sobre as complexidades da vida que estão por vir. É através de nossas próprias experiências, errando e acertando, que aprendemos a lidar com os desafios que surgem em nosso caminho. No entanto, se pudéssemos prever tudo o que aconteceria em cada fase de nossas vidas, será que seríamos capazes de lidar com isso de forma saudável? Algumas obras cinematográficas, como [Durante a Tormenta] (https://www.youtube.com/watch?v=aGE2Q_l_t7I) e [Dark] (https://www.youtube.com/watch?v=6EhDKaWLJgg), podem ilustrar essa experiência complexa.
 
 Um dos medos mais comuns que enfrentamos durante nossa vida acadêmica é o de reprovar em alguma matéria. Esse medo pode levar a bloqueios e preconceitos em relação a determinados professores e suas matérias. Mas é importante lembrar que os professores também se preocupam em aprovar a maioria dos alunos. Eles estão lá para ensinar, formar grandes pessoas e contribuir para a sociedade formando ótimos profissionais.
 
