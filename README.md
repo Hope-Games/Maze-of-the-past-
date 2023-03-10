@@ -51,6 +51,22 @@ Convidamos você a participar dessa batalha e experimentar o desafio de ser alun
 
 Alcançar o diploma de conclusão do ensino médio, após inúmeras dificuldades encontradas durante o percurso. 
 
+## Referências
+
+Cenário: 
+- IFSC - SJ 
+- Stranger Things 
+- Matrix 
+- Percy Jackson e o ladrão de raios 
+- 1917
+
+Jogos inspiração: 
+
+- Pokémon Legends: Arceus 
+- Starcather
+- Stranger Things: 1984
+- Super Mario Run
+
 ## Receita
 
 - Compra de loot box;
