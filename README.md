@@ -4,7 +4,6 @@
 
 Uma turma de alunos do último ano do ensino médio está prestes a se formar e precisa do seu apoio para enfrentar os desafios que terá pela frente até a formatura, desafios esses que são representados por uma batalha com os professores. Cada parte precisará demonstrar seus conhecimentos e testar a sabedoria dos alunos, seja como professor cobrando o conhecimento ou como alunos mostrando todo o conhecimento passado. 
 
-
 ## Jogo Ideal
 
 Desde cedo, aprendemos a ler, escrever e falar, mas muitas vezes não somos ensinados sobre as complexidades da vida que estão por vir. É através de nossas próprias experiências, errando e acertando, que aprendemos a lidar com os desafios que surgem em nosso caminho. No entanto, se pudéssemos prever tudo o que aconteceria em cada fase de nossas vidas, será que seríamos capazes de lidar com isso de forma saudável? Algumas obras cinematográficas, como *"Durante a Tormenta"* e *"Dark"*, podem ilustrar essa experiência complexa.
@@ -45,7 +44,6 @@ Cenário:
 - 1917
 
 Jogos inspiração: 
-
 - Pokémon Legends: Arceus 
 - Starcather
 - Stranger Things: 1984
