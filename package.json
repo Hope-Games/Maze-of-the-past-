@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "express": "^4.18.2"
-  }
+  },
+  "name": "the-quest-for-knowledge",
+  "description": "## Premissa",
+  "version": "1.0.0",
+  "main": "servidor.js",
+  "devDependencies": {},
+  "scripts": {
+    "star": "node servidor.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hope-Games/The-quest-for-knowledge.git"
+  },
+  "author": "Leticia Furlan <leticia.f14@aluno.ifsc.edu.br>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hope-Games/The-quest-for-knowledge/issues"
+  },
+  "homepage": "https://github.com/Hope-Games/The-quest-for-knowledge#readme"
 }
