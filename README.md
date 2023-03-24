@@ -47,9 +47,9 @@ Jogos inspiração:
 
 ## Receita
 
-- Versão premium - retirar propagandas passadas ao decorrer do jogo, pacotes com número específico de dicas extras;
-- Propagandas - a cada pista encontrada irá ter um vídeo de propaganda com 15s;
-- Venda de dicas, personagens customizáveis.
+- Versão premium - retirar propagandas passadas ao decorrer do jogo, pacotes com número específico de dicas extras (loot box);
+- Propagandas - a cada pista encontrada irá ter um vídeo de propaganda com 15s
+
 
 
 
