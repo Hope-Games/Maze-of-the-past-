@@ -2,58 +2,55 @@
 
 ## Premissa
 
-Uma turma de alunos do último ano do ensino médio está prestes a se formar e precisa do seu apoio para enfrentar os desafios que terá pela frente até a formatura, desafios esses que são representados por uma batalha com os professores. Cada parte precisará demonstrar seus conhecimentos e testar a sabedoria dos alunos, seja como professor cobrando o conhecimento ou como alunos mostrando todo o conhecimento passado. 
+Tyler e Derek eram amigos de infância que se conheciam desde sempre. Eles tinham uma forte amizade e estavam sempre juntos.Alguns dias antes do aniversário deles, ocorreu um jantar na casa de Tyler, e uma caixa misteriosa apareceu na porta de sua casa. Ficaram curiosos para saber o que havia dentro da caixa e decidiram levá-la ao quarto para abri-la juntos. O que eles não sabiam, era que o presente dentro da caixa iria mudar suas vidas de uma forma que eles nunca poderiam imaginar.
+
 
 ## Jogo Ideal
 
-Desde cedo, aprendemos a ler, escrever e falar, mas muitas vezes não somos ensinados sobre as complexidades da vida que estão por vir. É através de nossas próprias experiências, errando e acertando, que aprendemos a lidar com os desafios que surgem em nosso caminho. No entanto, se pudéssemos prever tudo o que aconteceria em cada fase de nossas vidas, será que seríamos capazes de lidar com isso de forma saudável? Algumas obras cinematográficas, como [Durante a Tormenta](https://www.youtube.com/watch?v=aGE2Q_l_t7I) e [Dark](https://www.youtube.com/watch?v=6EhDKaWLJgg), podem ilustrar essa experiência complexa.
+Em um mundo "normal", dois amigos inseparáveis, Tyler e Derek, que cresceram juntos como vizinhos e praticamente irmãos, levavam uma vida maravilhosa, sem problemas aparentes. Passavam a maior parte do tempo na casa um do outro e estudavam juntos na mesma escola. Tudo parecia perfeito até uma sexta-feira de Outubro, quando suas vidas foram completamente viradas do avesso.
 
-Um dos medos mais comuns que enfrentamos durante nossa vida acadêmica é o de reprovar em alguma matéria. Esse medo pode levar a bloqueios e preconceitos em relação a determinados professores e suas matérias. Mas é importante lembrar que os professores também se preocupam em aprovar a maioria dos alunos. Eles estão lá para ensinar, formar grandes pessoas e contribuir para a sociedade formando ótimos profissionais.
+Naquela noite, eles estavam animados com a proximidade de seus aniversários, que coincidem no mesmo dia e horário, quando a campainha tocou. Pensando ser um dos familiares que ainda não havia chegado, Tyler e Derek foram atender a porta, mas se surpreenderam ao encontrar uma caixa embrulhada em papel de presente. Sem entenderem por que um presente desconhecido estava ali, começaram a abrir a caixa. Nesse exato momento, todos os familiares que estavam reunidos na casa de Tyler, receberam uma mensagem de um familiar, pedindo que saíssem para encontrá-lo na estrada, pois estava perdido para achar a casa.
 
-Por meio do *"The Quest for Knowledge"*, queremos convidar a todos a participar de uma batalha entre aluno e professor. Não se trata de uma competição, mas sim de um trabalho em equipe. Criamos um jogo em que você pode se colocar no papel de um estudante prestes a se formar no Ensino Médio. Para chegar ao fim da caminhada e conseguir o diploma, você terá que enfrentar desafios e obstáculos que exigem conhecimentos adquiridos ao longo desses anos, além de lógica e habilidade.
+Apesar do pedido, Tyler e Derek decidiram ignorá-lo e continuar a abrir o presente, ansiosos para ver o que havia dentro. Encontraram uma mensagem que dizia para irem ao quarto de Tyler, onde estariam seus verdadeiros presentes. Sem entender o que estava acontecendo, mas curiosos, foram ao quarto e encontraram uma caixa com um grande botão vermelho. Ao apertá-lo, nada aconteceu, e eles ficaram desapontados com a suposta surpresa. Mas Derek, determinado a descobrir o que estava acontecendo, apertou o botão novamente, e foi aí que tudo mudou.
 
-Você também pode optar por assumir o papel de professor e ajudar seus alunos a absorver todo o conhecimento que você passou a eles. Seu objetivo é garantir que eles se tornem ótimos profissionais e contribuam para a sociedade de forma positiva.
+Eles saíram do quarto e se depararam com um labirinto que, para sua surpresa, era o lugar onde haviam passado toda a sua infância, a chácara. No entanto, o lugar estava abandonado e em ruínas, completamente diferente do que se lembravam. Enquanto caminhavam pelo labirinto, ouviam vozes estranhas que afirmavam que suas vidas eram uma mentira, que as pessoas ao seu redor eram impostores. Tudo parecia surreal e assustador, e eles não sabiam o que pensar. Será que era um sonho? Por que eles estavam revivendo o passado? Será que suas vidas eram uma mentira? 
 
-Convidamos você a participar dessa batalha e experimentar o desafio de ser aluno ou professor. Você está pronto para aceitar esse desafio?
+Com muitas perguntas e poucas respostas, cabe a você, jogador, desvendar os mistérios por trás desse enredo intrigante e cheio de mistérios.
+
 
 ## Regras
 
-- Vencer as 4 batalhas apresentadas durante a partida;
-- Coletar vida;
 - Jogo em 2D;
-- Tempo limite de 15 seg por batalha;
-- O jogador que escolher jogar como professor tem direito a ter um atributo com valor 2x maior;
-- Se passa em RPG, com salas temáticas;
-- Os jogadores iniciam a partida com a distribuição de pontos de atributos que ao decorrer da partida pode vir a se aprimorar; 
-- Após derrotar o adversário, o jogador terá direito a coletar os atributos do derrotado;
-- Terá direito a comprar com “diamantes” poderes, para assim vencer cada partida;
-- Ao ser atingido com poderes, o jogador perderá uma vida. Ao total ele terá 3 vidas;
-- Se for derrotado em alguma batalha, ele prossegue no jogo. Se na última batalha, ele tiver vidas, ele retorna aonde perdeu.
- 
+- Se passa em RPG;
+- Os jogadores deverão desvendar todas as charadas em ordem;
+- Poupar energias e coletar ao longo do jogo;
+- Caso um jogador perca sua energia, ficará preso na chácara da família do Tyler e precisará reiniciar o jogo;
+- Os jogadores irão jogar separadamente para no final descobrir o objetivo; 
+- Ouvir as vozes que o guiarão para a verdade;
+- Coletar as chaves para abrir o porão;
+
 ## Objetivo
 
-Alcançar o diploma de conclusão do ensino médio, após inúmeras dificuldades encontradas durante o percurso. 
+Desvendar o mistério apresentado pelo labirinto e saber o motivo do passado ter voltado à tona.
 
 ## Referências
 
-Cenário: 
-- IFSC - SJ 
-- Stranger Things 
-- Matrix 
-- Percy Jackson e o ladrão de raios 
-- 1917
+Cenário:
+- Stranger Things; 
+- O Iluminado;
+- The Maze Runner.
 
 Jogos inspiração: 
-- Pokémon Legends: Arceus 
-- Starcather
-- Stranger Things: 1984
-- Super Mario Run
+- Stranger Things: 1984;
+- Super Mario Run;
+- The Witch's House.
 
 ## Receita
 
-- Compra de loot box;
-- Versão premium;
-- Propagandas;
-- Venda do jogo de maneira personalizada.
+- Versão premium - retirar propagandas passadas ao decorrer do jogo, pacotes com número específico de dicas extras;
+- Propagandas - a cada pista encontrada irá ter um vídeo de propaganda com 15s;
+- Venda de dicas, personagens customizáveis.
+
+
 
 
