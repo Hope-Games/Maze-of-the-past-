@@ -3,7 +3,7 @@ import config from "./config.js";
 //
 //Importar códigos das cenas
 //Cena de abertura
-import abertura from "./cena.js";
+import abertura from "./cena-abertura.js";
 // Cena principal
 //import principal from "./principal.js"
 // Cena de encerramento
