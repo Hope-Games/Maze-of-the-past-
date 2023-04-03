@@ -12,8 +12,13 @@ export default class abertura extends Phaser.Scene {
         // Carregar em tela e/ou
         // Registrar eventos
         this.imagem = this.add
-            .image(128, 64, "logo-do-jogo")
+            .image(400, 225, "logo-do-jogo")
             .setInteractive()
+            .on("pointerdown", () => {
+                this.imagem.destroy();
+                this.game.scene.start("principal");
+            });
+        
     };
 
     update() {
