@@ -13,9 +13,50 @@ export default class principal extends Phaser.Scene {
     this.load.image("chao", "./assets/chao.png");
     //
     //Personagens1
-    this.load.spritesheet("Tyler", "./assets/Tyler.png", {
-      frameWidth: 64,
-      frameHeight: 64,
+    this.jogador_1 = this.physics.add.sprite(64, 64, "Tyler");
+    this.anims.create({
+      key: "jogador-1-baixo",
+      frames: this.anims.generateFrameNumbers("Tyler", {
+        start: 0,
+        end: 3,
+      })
+      frameRate: 30,
+      reapeat: -1,
+    });
+
+    this.anims.create({
+      key: "jogador-1-esquerda",
+      frames: this.anims.generateFrameNumbers("Tyler", {
+        start: 4,
+        end: 7,
+      })
+      frameRate: 30,
+      reapeat: -1,
+    })
+  
+    this.anims.create({
+      key: "jogador-1-direita",
+      frames: this.anims.generateFrameNumbers("Tyler", {
+        start: 8,
+        end: 11,
+      })
+      frameRate: 30,
+      reapeat: -1,
+    })
+      
+    this.anims.create({
+      key: "jogador-1-cima",
+      frames: this.anims.generateFrameNumbers("Tyler", {
+        start: 12,
+        end: 15,
+      })
+      frameRate: 30,
+      reapeat: -1,
+  
+    })
+  
+      {
+      
     });
     //
     //Personagens2
