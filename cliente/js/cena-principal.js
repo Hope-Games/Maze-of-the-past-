@@ -12,10 +12,10 @@ export default class principal extends Phaser.Scene {
     this.load.image("grama", "./assets/grama.png");
     this.load.image("chao", "./assets/chao.png");
     //
-    //Personagens1
+    //Personagens1 - Tyler
     this.jogador_1 = this.physics.add.sprite(64, 64, "Tyler");
     this.anims.create({
-      key: "jogador-1-baixo",
+      key: "Tyler-baixo",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 0,
         end: 3,
@@ -25,7 +25,7 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "jogador-1-esquerda",
+      key: "Tyler-esquerda",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 4,
         end: 7,
@@ -35,7 +35,7 @@ export default class principal extends Phaser.Scene {
     })
   
     this.anims.create({
-      key: "jogador-1-direita",
+      key: "Tyler-direita",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 8,
         end: 11,
@@ -45,7 +45,7 @@ export default class principal extends Phaser.Scene {
     })
       
     this.anims.create({
-      key: "jogador-1-cima",
+      key: "Tyler-cima",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 12,
         end: 15,
@@ -59,11 +59,29 @@ export default class principal extends Phaser.Scene {
       
     });
     //
-    //Personagens2
+    //Personagens2 - Stella
     this.load.spritesheet("Stella", "./assets/Stella.png", {
       frameWidth: 32,
       frameHeight: 48,
     });
+
+    /*Botões */
+    this.load.spritesheet("cima", "./assests/cima.png" , {
+      frameWidth: 64,
+      frameHeight: 64,
+    })
+    this.load.spritesheet("baixo", "./assests/cima.png" , {
+      frameWidth: 64,
+      frameHeight: 64,
+    })
+    this.load.spritesheet("esquerda", "./assests/cima.png" , {
+      frameWidth: 64,
+      frameHeight: 64,
+    })
+    this.load.spritesheet("direita", "./assests/cima.png" , {
+      frameWidth: 64,
+      frameHeight: 64,
+    })
   }
 
   create() {
@@ -92,7 +110,7 @@ export default class principal extends Phaser.Scene {
       0,
       0
     );
-
+    //Personagem1 - Tyler
     this.Tyler = this.physics.add.sprite(200, 225, "Tyler");
     //
     this.anims.create({
@@ -105,8 +123,8 @@ export default class principal extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-
-    //
+  
+    //Personagem2 -Stella
     this.Stella = this.physics.add.sprite(600, 225, "Stella");
     //
     this.anims.create({
@@ -121,7 +139,33 @@ export default class principal extends Phaser.Scene {
     //
     this.Tyler.anims.play("Tyler-baixo", true);
     this.Stella.anims.play("Stella-baixo", true);
-  }
+  
 
+  /*Botões */
+  this.cima = this.add
+    .sprite(100,350, "cima", 0) 
+    .setInteractive()
+    .on("pointdown", () => {
+      this.cima.setFrame(1);
+    })
+    .on("pointerup", () => {
+      this.cima.setFrame(0);
+      this.Tyler.setVelocityY (-50);
+      this.Tyler.anims.play("Tyler-cima")
+    });
+
+
+  this.add.sprite(450,450, "esquerda")
+
+  this.direita = this.add
+    .sprite(150,400, "direita", 0) 
+    .setInteractive()
+    .on("pointerdown", () => {
+      this.direita.setFrame(1);
+      this.Tyler.setVelocityX (50);
+      this.Tyler.anims.play("Tyler-direita")
+    })
+  }
+  
   upload() {}
 }
