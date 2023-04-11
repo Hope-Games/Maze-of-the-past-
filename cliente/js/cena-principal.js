@@ -11,13 +11,13 @@ export default class principal extends Phaser.Scene {
     this.load.image("grama", "./assets/grama.png");
     this.load.image("chao", "./assets/chao.png");
 
-    /* Personagem 1: Tyler */
+    /* Personagens 1 e 2: Tyler */
     this.load.spritesheet("Tyler", "./assets/Tyler.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
-    /* Personagem 2: Stella */
+    /* Personagem 3: Stella */
     this.load.spritesheet("Stella", "./assets/Stella.png", {
       frameWidth: 32,
       frameHeight: 48,
@@ -56,19 +56,13 @@ export default class principal extends Phaser.Scene {
     this.grama = this.mapa.createLayer("grama", this.tileset_mapa_grama, 0, 0);
 
     /* Layer 1: chão */
-    this.chao = this.mapa.createLayer(
-      "chao",
-      this,
-      this.tileset_mapa_grama,
-      0,
-      0
-    );
+    this.chao = this.mapa.createLayer("chao", this.tileset_mapa_chao, 0, 0);
 
     /* Personagem 1: Tyler */
-    this.Tyler = this.physics.add.sprite(200, 225, "Tyler");
+    this.Tyler_A = this.physics.add.sprite(200, 300, "Tyler");
 
     this.anims.create({
-      key: "Tyler-parado",
+      key: "Tyler-A-parado",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 0,
         end: 0,
@@ -77,7 +71,7 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-baixo",
+      key: "Tyler-A-baixo",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 0,
         end: 3,
@@ -87,7 +81,7 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-esquerda",
+      key: "Tyler-A-esquerda",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 4,
         end: 7,
@@ -97,7 +91,7 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-direita",
+      key: "Tyler-A-direita",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 8,
         end: 11,
@@ -107,7 +101,7 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-cima",
+      key: "Tyler-A-cima",
       frames: this.anims.generateFrameNumbers("Tyler", {
         start: 12,
         end: 15,
@@ -116,67 +110,98 @@ export default class principal extends Phaser.Scene {
       repeat: -1,
     });
 
-    /* Personagem 2: Stella */
-    this.Stella = this.physics.add.sprite(600, 225, "Stella");
+    /* Personagem 2: Tyler */
+    this.Tyler_B = this.add.sprite(700, 300, "Tyler").setTint(0xaaaaaa);
 
-    /*Botões */
+    /* Personagem 3: Stella */
+    this.Stella = this.add.sprite(600, 300, "Stella");
+
     /* Botões */
     this.cima = this.add
       .sprite(120, 330, "cima", 0)
       .setInteractive()
-      .on("pointerdown", () => {
+      .on("pointerover", () => {
         this.cima.setFrame(1);
-        this.Tyler.setVelocityY(-100);
-        this.Tyler.anims.play("Tyler-cima");
+        this.Tyler_A.setVelocityY(-200);
+        this.Tyler_A.anims.play("Tyler-A-cima");
       })
-      .on("pointerup", () => {
+      .on("pointerout", () => {
         this.cima.setFrame(0);
-        this.Tyler.setVelocityY(0);
-        this.Tyler.anims.play("Tyler-parado");
-      });
+        this.Tyler_A.setVelocityY(0);
+        this.Tyler_A.anims.play("Tyler-A-parado");
+      })
+      .setScrollFactor(0);
 
     this.baixo = this.add
       .sprite(120, 400, "baixo", 0)
       .setInteractive()
-      .on("pointerdown", () => {
+      .on("pointerover", () => {
         this.baixo.setFrame(1);
-        this.Tyler.setVelocityY(100);
-        this.Tyler.anims.play("Tyler-baixo");
+        this.Tyler_A.setVelocityY(200);
+        this.Tyler_A.anims.play("Tyler-A-baixo");
       })
-      .on("pointerup", () => {
+      .on("pointerout", () => {
         this.baixo.setFrame(0);
-        this.Tyler.setVelocityY(0);
-        this.Tyler.anims.play("Tyler-parado");
-      });
+        this.Tyler_A.setVelocityY(0);
+        this.Tyler_A.anims.play("Tyler-A-parado");
+      })
+      .setScrollFactor(0);
 
     this.esquerda = this.add
       .sprite(50, 400, "esquerda", 0)
       .setInteractive()
-      .on("pointerdown", () => {
+      .on("pointerover", () => {
         this.esquerda.setFrame(1);
-        this.Tyler.setVelocityX(-100);
-        this.Tyler.anims.play("Tyler-esquerda");
+        this.Tyler_A.setVelocityX(-200);
+        this.Tyler_A.anims.play("Tyler-A-esquerda");
       })
-      .on("pointerup", () => {
+      .on("pointerout", () => {
         this.esquerda.setFrame(0);
-        this.Tyler.setVelocityX(0);
-        this.Tyler.anims.play("Tyler-parado");
-      });
+        this.Tyler_A.setVelocityX(0);
+        this.Tyler_A.anims.play("Tyler-A-parado");
+      })
+      .setScrollFactor(0);
 
     this.direita = this.add
       .sprite(190, 400, "direita", 0)
       .setInteractive()
-      .on("pointerdown", () => {
+      .on("pointerover", () => {
         this.direita.setFrame(1);
-        this.Tyler.setVelocityX(100);
-        this.Tyler.anims.play("Tyler-direita");
+        this.Tyler_A.setVelocityX(200);
+        this.Tyler_A.anims.play("Tyler-A-direita");
       })
-      .on("pointerup", () => {
+      .on("pointerout", () => {
         this.direita.setFrame(0);
-        this.Tyler.setVelocityX(0);
-        this.Tyler.anims.play("Tyler-parado");
-      });
+        this.Tyler_A.setVelocityX(0);
+        this.Tyler_A.anims.play("Tyler-A-parado");
+      })
+      .setScrollFactor(0);
+
+    /* Colisões por tile */
+    this.chao.setCollisionByProperty({ collides: true });
+
+    /* Colisão entre personagem 1 e mapa (por layer) */
+    this.physics.add.collider(
+      this.Tyler_A,
+      this.chao,
+      this.collision,
+      null,
+      this
+    );
+
+    /* Cena (1920x1920) maior que a tela (800x450) */
+    this.cameras.main.setBounds(0, 0, 1920, 1920);
+    this.physics.world.setBounds(0, 0, 1920, 1920);
+    this.cameras.main.startFollow(this.Tyler_A);
   }
 
   upload() {}
+
+  collision() {
+    /* Tremer a tela por 100 ms com baixa intensidade (0.01) */
+    this.cameras.main.shake(100, 0.01);
+
+    /* Vibrar o celular pelos mesmos 100 ms */
+    window.navigator.vibrate([100]);
+  }
 }
