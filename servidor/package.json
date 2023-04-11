@@ -3,8 +3,7 @@
     "express": "^4.18.2"
   },
   "name": "maze-of-the-past",
-  "description": "## Premissa",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "servidor.js",
   "devDependencies": {},
   "scripts": {
@@ -12,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hope-Games/The-quest-for-knowledge.git"
+    "url": "git+https://github.com/Hope-Games/Maze-of-the-past-.git"
   },
   "author": "Leticia Furlan <leticia.f14@aluno.ifsc.edu.br>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Hope-Games/The-quest-for-knowledge/issues"
+    "url": "https://github.com/Hope-Games/Maze-of-the-past-/issues"
   },
-  "homepage": "https://github.com/Hope-Games/The-quest-for-knowledge#readme"
+  "homepage": "https://github.com/Hope-Games/Maze-of-the-past-#readme"
 }
