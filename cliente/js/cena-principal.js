@@ -73,7 +73,7 @@ export default class principal extends Phaser.Scene {
         start: 0,
         end: 0,
       }),
-      frameRate: 1
+      frameRate: 1,
     });
 
     this.anims.create({
