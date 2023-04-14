@@ -11,16 +11,28 @@ export default class principal extends Phaser.Scene {
     this.load.image("grama", "./assets/grama.png");
     this.load.image("chao", "./assets/chao.png");
 
-    /* Personagens 1 e 2: Tyler */
+    /* Personagem 1: Tyler */
     this.load.spritesheet("Tyler", "./assets/Tyler.png", {
+      frameWidth: 64,
+      frameHeight: 64,
+    });
+
+    /* Personagem 2: Derek */
+    this.load.spritesheet("derek", "./assets/derek.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
     /* Personagem 3: Stella */
     this.load.spritesheet("Stella", "./assets/Stella.png", {
-      frameWidth: 32,
-      frameHeight: 48,
+      frameWidth: 64,
+      frameHeight: 64,
+    });
+
+    /* Artefato */
+    this.load.spritesheet("chave", "./assets/chave.png", {
+      frameWidth: 64,
+      frameHeight: 64,
     });
 
     /*Botões */
@@ -59,7 +71,7 @@ export default class principal extends Phaser.Scene {
     this.chao = this.mapa.createLayer("chao", this.tileset_mapa_chao, 0, 0);
 
     /* Personagem 1: Tyler */
-    this.Tyler_A = this.physics.add.sprite(200, 300, "Tyler");
+    this.Tyler = this.physics.add.sprite(200, 300, "Tyler");
 
     this.anims.create({
       key: "Tyler-A-parado",
@@ -111,10 +123,22 @@ export default class principal extends Phaser.Scene {
     });
 
     /* Personagem 2: Tyler */
-    this.Tyler_B = this.add.sprite(700, 300, "Tyler").setTint(0xaaaaaa);
+    this.Derek = this.add.sprite(700, 300, "derek");
 
     /* Personagem 3: Stella */
     this.Stella = this.add.sprite(600, 300, "Stella");
+
+    /* */
+    this.chave = this.physics.add.sprite(550, 300, "chave");
+
+    this.anims.create({
+      key: "chave-pulando",
+      frames: this.anims.generateFrameNumbers("chave", { start: 0, end: 1 }),
+      frameRate: 4,
+      repeat: -1,
+    });
+
+    this.chave.anims.play("chave-pulando");
 
     /* Botões */
     this.cima = this.add
@@ -122,13 +146,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.cima.setFrame(1);
-        this.Tyler_A.setVelocityY(-200);
-        this.Tyler_A.anims.play("Tyler-A-cima");
+        this.Tyler.setVelocityY(-200);
+        this.Tyler.anims.play("Tyler-A-cima");
       })
       .on("pointerout", () => {
         this.cima.setFrame(0);
-        this.Tyler_A.setVelocityY(0);
-        this.Tyler_A.anims.play("Tyler-A-parado");
+        this.Tyler.setVelocityY(0);
+        this.Tyler.anims.play("Tyler-A-parado");
       })
       .setScrollFactor(0);
 
@@ -137,13 +161,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.baixo.setFrame(1);
-        this.Tyler_A.setVelocityY(200);
-        this.Tyler_A.anims.play("Tyler-A-baixo");
+        this.Tyler.setVelocityY(200);
+        this.Tyler.anims.play("Tyler-A-baixo");
       })
       .on("pointerout", () => {
         this.baixo.setFrame(0);
-        this.Tyler_A.setVelocityY(0);
-        this.Tyler_A.anims.play("Tyler-A-parado");
+        this.Tyler.setVelocityY(0);
+        this.Tyler.anims.play("Tyler-A-parado");
       })
       .setScrollFactor(0);
 
@@ -152,13 +176,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.esquerda.setFrame(1);
-        this.Tyler_A.setVelocityX(-200);
-        this.Tyler_A.anims.play("Tyler-A-esquerda");
+        this.Tyler.setVelocityX(-200);
+        this.Tyler.anims.play("Tyler-A-esquerda");
       })
       .on("pointerout", () => {
         this.esquerda.setFrame(0);
-        this.Tyler_A.setVelocityX(0);
-        this.Tyler_A.anims.play("Tyler-A-parado");
+        this.Tyler.setVelocityX(0);
+        this.Tyler.anims.play("Tyler-A-parado");
       })
       .setScrollFactor(0);
 
@@ -167,13 +191,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.direita.setFrame(1);
-        this.Tyler_A.setVelocityX(200);
-        this.Tyler_A.anims.play("Tyler-A-direita");
+        this.Tyler.setVelocityX(200);
+        this.Tyler.anims.play("Tyler-A-direita");
       })
       .on("pointerout", () => {
         this.direita.setFrame(0);
-        this.Tyler_A.setVelocityX(0);
-        this.Tyler_A.anims.play("Tyler-A-parado");
+        this.Tyler.setVelocityX(0);
+        this.Tyler.anims.play("Tyler-A-parado");
       })
       .setScrollFactor(0);
 
@@ -182,17 +206,29 @@ export default class principal extends Phaser.Scene {
 
     /* Colisão entre personagem 1 e mapa (por layer) */
     this.physics.add.collider(
-      this.Tyler_A,
+      this.Tyler,
       this.chao,
       this.collision,
       null,
       this
     );
 
+    /* Colisão com os limites da cena */
+    this.Tyler.setCollideWorldBounds(true);
+
     /* Cena (1920x1920) maior que a tela (800x450) */
     this.cameras.main.setBounds(0, 0, 1920, 1920);
     this.physics.world.setBounds(0, 0, 1920, 1920);
-    this.cameras.main.startFollow(this.Tyler_A);
+    this.cameras.main.startFollow(this.Tyler);
+
+    /* Colisão com objeto */
+    this.physics.add.collider(
+      this.Tyler,
+      this.chave,
+      this.coletar_chave,
+      null,
+      this
+    );
   }
 
   upload() {}
@@ -203,5 +239,9 @@ export default class principal extends Phaser.Scene {
 
     /* Vibrar o celular pelos mesmos 100 ms */
     window.navigator.vibrate([100]);
+  }
+
+  coletar_chave() {
+    this.chave.disableBody(true, true);
   }
 }
