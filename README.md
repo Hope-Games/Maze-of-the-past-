@@ -33,6 +33,21 @@ Com muitas perguntas e poucas respostas, cabe a você, jogador, desvendar os mis
 
 Desvendar o mistério apresentado pelo labirinto e saber o motivo do passado ter voltado à tona.
 
+## Fluxograma das cenas 
+
+CENA 1: Entrada 
+![Entrada](cliente/assets/1.png)
+
+CENA 2: Contextualização
+![Contextualização](cliente/assets/2.png)
+
+CENA 3: Labirinto do jogo 
+![Principal](cliente/assets/3.png)
+
+CENA 4: Encerramento
+![Encerramento](cliente/assets/4.png)
+
+
 ## Referências
 
 Cenário:
