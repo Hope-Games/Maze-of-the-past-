@@ -18,7 +18,7 @@ export default class principal extends Phaser.Scene {
     });
 
     /* Personagem 2: Derek */
-    this.load.spritesheet("derek", "./assets/derek.png", {
+    this.load.spritesheet("Derek", "./assets/Derek.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
@@ -35,6 +35,7 @@ export default class principal extends Phaser.Scene {
       frameHeight: 64,
     });
 
+  
     /*Botões */
     this.load.spritesheet("cima", "./assets/cima.png", {
       frameWidth: 64,
@@ -123,7 +124,7 @@ export default class principal extends Phaser.Scene {
     });
 
     /* Personagem 2: Derek */
-    this.Derek = this.add.sprite(700, 300, "derek");
+    this.Derek = this.add.sprite(700, 300, "Derek");
 
     /* Personagem 3: Stella */
     this.Stella = this.add.sprite(600, 300, "Stella");
