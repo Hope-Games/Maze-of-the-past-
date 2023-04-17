@@ -122,7 +122,7 @@ export default class principal extends Phaser.Scene {
       repeat: -1,
     });
 
-    /* Personagem 2: Tyler */
+    /* Personagem 2: Derek */
     this.Derek = this.add.sprite(700, 300, "derek");
 
     /* Personagem 3: Stella */
