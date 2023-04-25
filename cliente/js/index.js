@@ -22,7 +22,7 @@ class Game extends Phaser.Game {
     //this.scene.add("final-feliz", final_feliz);
     //
     // Inciar pela cena de abertura
-    this.scene.start("principal");
+    this.scene.start("abertura");
   }
 }
 
