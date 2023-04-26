@@ -1,18 +1,17 @@
 export default class abertura extends Phaser.Scene {
   constructor() {
-    super("abertura");
+    super("cena_abertura");
   }
 
   preload() {
     // Carregamento de arquivos/objetos em memória
-    this.load.image("abertura", "./assets/abertura.png");
+    this.load.image("cena_abertura", "./assets/abertura/cena_abertura.png");
   }
 
   create() {
-    // Carregar em tela e/ou
-    // Registrar eventos
+    /* Imagem de fundo */
     this.imagem = this.add
-      .image(800, 793, "abertura")
+      .image(400, 225, "cena_abertura")
       .setInteractive()
       .on("pointerdown", () => {
         this.imagem.destroy();
@@ -20,7 +19,7 @@ export default class abertura extends Phaser.Scene {
       });
   }
 
-  update() {
+  upload() {
     // Código executado a cada frame
   }
 }
