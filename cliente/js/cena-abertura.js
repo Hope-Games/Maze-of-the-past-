@@ -1,6 +1,6 @@
 export default class abertura extends Phaser.Scene {
   constructor() {
-    super("cena_abertura");
+    super("abertura");
   }
 
   preload() {
