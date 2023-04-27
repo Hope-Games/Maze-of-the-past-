@@ -35,7 +35,6 @@ export default class principal extends Phaser.Scene {
       frameHeight: 64,
     });
 
-  
     /*Botões */
     this.load.spritesheet("cima", "./assets/botões/cima.png", {
       frameWidth: 64,
@@ -59,7 +58,7 @@ export default class principal extends Phaser.Scene {
       frameHeight: 64,
     });
 
-     /* Sons */
+    /* Sons */
     this.load.audio("trilha", "./assets/áudios/audio_principal.mp3");
     //this.load.audio("metal-som", "./assets/metal.mp3");
     //this.load.audio("cristal-som", "./assets/cristal.mp3");
@@ -68,6 +67,7 @@ export default class principal extends Phaser.Scene {
   create() {
     /* Trilha sonora */
     this.trilha = this.sound.add("trilha");
+    this.trilha.loop = true;
     this.trilha.play();
 
     /* Tilemap */
@@ -216,20 +216,20 @@ export default class principal extends Phaser.Scene {
       })
       .setScrollFactor(0);
 
-        this.tela_cheia = this.add
-          .sprite(750, 50, "tela-cheia", 0)
-          .setInteractive()
-          .on("pointerdown", () => {
-            if (this.scale.isFullscreen) {
-              this.tela_cheia.setFrame(0);
-              this.scale.stopFullscreen();
-            } else {
-              this.tela_cheia.setFrame(1);
-              this.scale.startFullscreen();
-            }
-          })
-          .setScrollFactor(0);
-    
+    this.tela_cheia = this.add
+      .sprite(750, 50, "tela-cheia", 0)
+      .setInteractive()
+      .on("pointerdown", () => {
+        if (this.scale.isFullscreen) {
+          this.tela_cheia.setFrame(0);
+          this.scale.stopFullscreen();
+        } else {
+          this.tela_cheia.setFrame(1);
+          this.scale.startFullscreen();
+        }
+      })
+      .setScrollFactor(0);
+
     /* Colisões por tile */
     this.chao.setCollisionByProperty({ collides: true });
 

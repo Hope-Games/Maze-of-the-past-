@@ -36,16 +36,16 @@ Desvendar o mistério apresentado pelo labirinto e saber o motivo do passado ter
 ## Fluxograma das cenas 
 
 CENA 1: Entrada 
-![Entrada](cliente/assets/1.png)
+![Entrada](cliente/assets/fluxograma/1.png)
 
 CENA 2: Contextualização
-![Contextualização](cliente/assets/2.png)
+![Contextualização](cliente/assets/fluxograma/2.png)
 
 CENA 3: Labirinto do jogo 
-![Principal](cliente/assets/3.png)
+![Principal](cliente/assets/fluxograma/3.png)
 
 CENA 4: Encerramento
-![Encerramento](cliente/assets/4.png)
+![Encerramento](cliente/assets/fluxograma/4.png)
 
 
 ## Referências
