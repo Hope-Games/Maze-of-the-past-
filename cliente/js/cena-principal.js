@@ -12,62 +12,62 @@ export default class principal extends Phaser.Scene {
     this.load.image("chao", "./assets/chao.png");
 
     /* Personagem 1: Tyler */
-    this.load.spritesheet("Tyler", "./assets/Tyler.png", {
+    this.load.spritesheet("Tyler", "./assets/personagens/Tyler.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
     /* Personagem 2: Derek */
-    this.load.spritesheet("Derek", "./assets/Derek.png", {
+    this.load.spritesheet("Derek", "./assets/personagens/Derek.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
     /* Personagem 3: Stella */
-    this.load.spritesheet("Stella", "./assets/Stella.png", {
+    this.load.spritesheet("Stella", "./assets/personagens/Stella.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
     /* Artefato */
-    this.load.spritesheet("chave", "./assets/chave.png", {
+    this.load.spritesheet("chave", "./assets/icones/chave.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
   
     /*Botões */
-    this.load.spritesheet("cima", "./assets/cima.png", {
+    this.load.spritesheet("cima", "./assets/botões/cima.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
-    this.load.spritesheet("baixo", "./assets/baixo.png", {
+    this.load.spritesheet("baixo", "./assets/botões/baixo.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
-    this.load.spritesheet("esquerda", "./assets/esquerda.png", {
+    this.load.spritesheet("esquerda", "./assets/botões/esquerda.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
-    this.load.spritesheet("direita", "./assets/direita.png", {
+    this.load.spritesheet("direita", "./assets/botões/direita.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
-    this.load.spritesheet("tela-cheia", "./assets/tela-cheia.png", {
+    this.load.spritesheet("tela-cheia", "./assets/abertura/tela-cheia.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
 
      /* Sons */
-    this.load.audio("techno-trilha", "./assets/techno.mp3");
-    this.load.audio("metal-som", "./assets/metal.mp3");
-    this.load.audio("cristal-som", "./assets/cristal.mp3");
+    this.load.audio("trilha", "./assets/áudios/audio_principal.mp3");
+    //this.load.audio("metal-som", "./assets/metal.mp3");
+    //this.load.audio("cristal-som", "./assets/cristal.mp3");
   }
 
   create() {
     /* Trilha sonora */
-    this.trilha = this.sound.add("techno-trilha");
+    this.trilha = this.sound.add("trilha");
     this.trilha.play();
 
     /* Tilemap */
