@@ -26,7 +26,7 @@ export default class abertura extends Phaser.Scene {
 
     /* Botões */
     this.cima = this.add
-      .sprite(400, 300, "botao_start", 0)
+      .sprite(400, 400, "botao_start", 0)
       .setInteractive()
       .on("pointerdown", () => {
         this.cima.setFrame(1);

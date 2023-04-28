@@ -23,11 +23,6 @@ export default class principal extends Phaser.Scene {
       frameHeight: 64,
     });
 
-    /* Personagem 3: Stella */
-    this.load.spritesheet("Stella", "./assets/personagens/Stella.png", {
-      frameWidth: 64,
-      frameHeight: 64,
-    });
 
     /* Artefato */
     this.load.spritesheet("chave", "./assets/icones/chave.png", {
@@ -140,8 +135,6 @@ export default class principal extends Phaser.Scene {
     /* Personagem 2: Derek */
     this.Derek = this.add.sprite(700, 300, "Derek");
 
-    /* Personagem 3: Stella */
-    this.Stella = this.add.sprite(600, 300, "Stella");
 
     /* */
     this.chave = this.physics.add.sprite(550, 300, "chave");
