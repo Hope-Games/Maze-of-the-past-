@@ -8,7 +8,7 @@ export default class principal extends Phaser.Scene {
     this.load.tilemapTiledJSON("mapa", "./assets/mapa.json");
 
     /* Tilesets */
-    this.load.image("grama", "./assets/grama.png");
+    this.load.image("bloco", "./assets/bloco.png");
     this.load.image("chao", "./assets/chao.png");
 
     /* Personagem 1: Tyler */
@@ -22,7 +22,6 @@ export default class principal extends Phaser.Scene {
       frameWidth: 64,
       frameHeight: 64,
     });
-
 
     /* Artefato */
     this.load.spritesheet("chave", "./assets/icones/chave.png", {
@@ -55,8 +54,7 @@ export default class principal extends Phaser.Scene {
 
     /* Sons */
     this.load.audio("trilha", "./assets/áudios/audio_principal.mp3");
-    //this.load.audio("metal-som", "./assets/metal.mp3");
-    //this.load.audio("cristal-som", "./assets/cristal.mp3");
+    this.load.audio("som-chave", "./assets/áudios/som_chave.mp3");
   }
 
   create() {
@@ -71,14 +69,15 @@ export default class principal extends Phaser.Scene {
     });
 
     /* Tilesets */
-    this.tileset_mapa_grama = this.mapa.addTilesetImage("grama", "grama");
+    this.tileset_mapa_bloco = this.mapa.addTilesetImage("bloco", "bloco");
     this.tileset_mapa_chao = this.mapa.addTilesetImage("chao", "chao");
 
-    /* Layer 0: grama */
-    this.grama = this.mapa.createLayer("grama", this.tileset_mapa_grama, 0, 0);
-
-    /* Layer 1: chão */
+    /* chão */
     this.chao = this.mapa.createLayer("chao", this.tileset_mapa_chao, 0, 0);
+
+    /* bloco */
+    this.bloco = this.mapa.createLayer("bloco", this.tileset_mapa_bloco, 0, 0);
+
 
     /* Personagem 1: Tyler */
     this.Tyler = this.physics.add.sprite(200, 300, "Tyler");
@@ -135,7 +134,6 @@ export default class principal extends Phaser.Scene {
     /* Personagem 2: Derek */
     this.Derek = this.add.sprite(700, 300, "Derek");
 
-
     /* */
     this.chave = this.physics.add.sprite(550, 300, "chave");
 
@@ -147,6 +145,7 @@ export default class principal extends Phaser.Scene {
     });
 
     this.chave.anims.play("chave-pulando");
+    this.som_chave = this.sound.add("som-chave");
 
     /* Botões */
     this.cima = this.add
@@ -224,12 +223,12 @@ export default class principal extends Phaser.Scene {
       .setScrollFactor(0);
 
     /* Colisões por tile */
-    this.chao.setCollisionByProperty({ collides: true });
+    this.bloco.setCollisionByProperty({ collides: true });
 
     /* Colisão entre personagem 1 e mapa (por layer) */
     this.physics.add.collider(
       this.Tyler,
-      this.chao,
+      this.bloco,
       this.collision,
       null,
       this
@@ -265,5 +264,6 @@ export default class principal extends Phaser.Scene {
 
   coletar_chave() {
     this.chave.disableBody(true, true);
+    this.som_chave.play();
   }
 }

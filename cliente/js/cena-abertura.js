@@ -16,13 +16,7 @@ export default class abertura extends Phaser.Scene {
 
   create() {
     /* Imagem de fundo */
-    this.imagem = this.add
-      .image(400, 225, "cena_abertura")
-      .setInteractive()
-      .on("pointerdown", () => {
-        this.imagem.destroy();
-        this.game.scene.start("principal");
-      });
+    this.imagem = this.add.image(400, 225, "cena_abertura");
 
     /* Botões */
     this.cima = this.add
@@ -30,6 +24,8 @@ export default class abertura extends Phaser.Scene {
       .setInteractive()
       .on("pointerdown", () => {
         this.cima.setFrame(1);
+        this.imagem.destroy();
+        this.cima.destroy();
         this.game.scene.start("principal");
       });
   }
