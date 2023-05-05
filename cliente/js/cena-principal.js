@@ -149,7 +149,7 @@ export default class principal extends Phaser.Scene {
 
     /* Botões */
     this.cima = this.add
-      .sprite(120, 330, "cima", 0)
+      .sprite(125, 330, "cima", 0)
       .setInteractive()
       .on("pointerover", () => {
         this.cima.setFrame(1);
@@ -179,7 +179,7 @@ export default class principal extends Phaser.Scene {
       .setScrollFactor(0);
 
     this.esquerda = this.add
-      .sprite(50, 400, "esquerda", 0)
+      .sprite(60, 370, "esquerda", 0)
       .setInteractive()
       .on("pointerover", () => {
         this.esquerda.setFrame(1);
@@ -194,7 +194,7 @@ export default class principal extends Phaser.Scene {
       .setScrollFactor(0);
 
     this.direita = this.add
-      .sprite(190, 400, "direita", 0)
+      .sprite(190, 370, "direita", 0)
       .setInteractive()
       .on("pointerover", () => {
         this.direita.setFrame(1);
