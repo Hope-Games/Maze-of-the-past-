@@ -14,6 +14,12 @@ import principal from "./cena-principal.js"
 class Game extends Phaser.Game {
   constructor() {
     super(config);
+  
+    this.socket = io();
+    this.socket.on("connect", () => {
+      console.log("Conectado ao servidor para troca de mensagens.");
+    });
+    
     //
     // Carreagar as cenas
     this.scene.add("abertura", abertura);

@@ -80,7 +80,7 @@ export default class principal extends Phaser.Scene {
 
 
     /* Personagem 1: Tyler */
-    this.Tyler = this.physics.add.sprite(200, 300, "Tyler");
+    this.Tyler = this.physics.add.sprite(100, 50, "Tyler");
 
     this.anims.create({
       key: "Tyler-A-parado",
@@ -132,10 +132,10 @@ export default class principal extends Phaser.Scene {
     });
 
     /* Personagem 2: Derek */
-    this.Derek = this.add.sprite(700, 300, "Derek");
+    this.Derek = this.add.sprite(100, 1890, "Derek");
 
     /* */
-    this.chave = this.physics.add.sprite(550, 300, "chave");
+    this.chave = this.physics.add.sprite(560, 350, "chave");
 
     this.anims.create({
       key: "chave-pulando",
