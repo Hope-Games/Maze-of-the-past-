@@ -82,12 +82,12 @@ export default class principal extends Phaser.Scene {
       this.local = "Tyler";
       this.jogador_1 = this.physics.add.sprite(100, 50, this.local);
       this.remoto = "Derek";
-      this.jogador_2 = this.add.sprite(1000, 1890, this.remoto);
+      this.jogador_2 = this.add.sprite(1820, 2000, this.remoto);
     } else {
       this.remoto = "Tyler";
       this.jogador_2 = this.add.sprite(100, 50, this.remoto);
       this.local = "Derek";
-      this.jogador_1 = this.physics.add.sprite(1000, 1890, this.local);
+      this.jogador_1 = this.physics.add.sprite(1820, 2000, this.local);
     }
 
     this.anims.create({
