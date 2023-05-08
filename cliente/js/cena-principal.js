@@ -78,13 +78,21 @@ export default class principal extends Phaser.Scene {
     /* bloco */
     this.bloco = this.mapa.createLayer("bloco", this.tileset_mapa_bloco, 0, 0);
 
-
-    /* Personagem 1: Tyler */
-    this.Tyler = this.physics.add.sprite(100, 50, "Tyler");
+    if (this.game.jogadores.primeiro === this.game.socket.id) {
+      this.local = "Tyler";
+      this.jogador_1 = this.physics.add.sprite(100, 50, this.local);
+      this.remoto = "Derek";
+      this.jogador_2 = this.add.sprite(1000, 1890, this.remoto);
+    } else {
+      this.remoto = "Tyler";
+      this.jogador_2 = this.add.sprite(100, 50, this.remoto);
+      this.local = "Derek";
+      this.jogador_1 = this.physics.add.sprite(1000, 1890, this.local);
+    }
 
     this.anims.create({
-      key: "Tyler-A-parado",
-      frames: this.anims.generateFrameNumbers("Tyler", {
+      key: "jogador_1-A-parado",
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 0,
       }),
@@ -92,8 +100,8 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-A-baixo",
-      frames: this.anims.generateFrameNumbers("Tyler", {
+      key: "jogador_1-A-baixo",
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 0,
         end: 3,
       }),
@@ -102,8 +110,8 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-A-esquerda",
-      frames: this.anims.generateFrameNumbers("Tyler", {
+      key: "jogador_1-A-esquerda",
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 4,
         end: 7,
       }),
@@ -112,8 +120,8 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-A-direita",
-      frames: this.anims.generateFrameNumbers("Tyler", {
+      key: "jogador_1-A-direita",
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 8,
         end: 11,
       }),
@@ -122,17 +130,14 @@ export default class principal extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "Tyler-A-cima",
-      frames: this.anims.generateFrameNumbers("Tyler", {
+      key: "jogador_1-A-cima",
+      frames: this.anims.generateFrameNumbers(this.local, {
         start: 12,
         end: 15,
       }),
       frameRate: 10,
       repeat: -1,
     });
-
-    /* Personagem 2: Derek */
-    this.Derek = this.add.sprite(100, 1890, "Derek");
 
     /* */
     this.chave = this.physics.add.sprite(560, 350, "chave");
@@ -153,13 +158,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.cima.setFrame(1);
-        this.Tyler.setVelocityY(-200);
-        this.Tyler.anims.play("Tyler-A-cima");
+        this.jogador_1.setVelocityY(-200);
+        this.jogador_1.anims.play("jogador_1-A-cima");
       })
       .on("pointerout", () => {
         this.cima.setFrame(0);
-        this.Tyler.setVelocityY(0);
-        this.Tyler.anims.play("Tyler-A-parado");
+        this.jogador_1.setVelocityY(0);
+        this.jogador_1.anims.play("jogador_1-A-parado");
       })
       .setScrollFactor(0);
 
@@ -168,13 +173,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.baixo.setFrame(1);
-        this.Tyler.setVelocityY(200);
-        this.Tyler.anims.play("Tyler-A-baixo");
+        this.jogador_1.setVelocityY(200);
+        this.jogador_1.anims.play("jogador_1-A-baixo");
       })
       .on("pointerout", () => {
         this.baixo.setFrame(0);
-        this.Tyler.setVelocityY(0);
-        this.Tyler.anims.play("Tyler-A-parado");
+        this.jogador_1.setVelocityY(0);
+        this.jogador_1.anims.play("jogador_1-A-parado");
       })
       .setScrollFactor(0);
 
@@ -183,13 +188,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.esquerda.setFrame(1);
-        this.Tyler.setVelocityX(-200);
-        this.Tyler.anims.play("Tyler-A-esquerda");
+        this.jogador_1.setVelocityX(-200);
+        this.jogador_1.anims.play("jogador_1-A-esquerda");
       })
       .on("pointerout", () => {
         this.esquerda.setFrame(0);
-        this.Tyler.setVelocityX(0);
-        this.Tyler.anims.play("Tyler-A-parado");
+        this.jogador_1.setVelocityX(0);
+        this.jogador_1.anims.play("jogador_1-A-parado");
       })
       .setScrollFactor(0);
 
@@ -198,13 +203,13 @@ export default class principal extends Phaser.Scene {
       .setInteractive()
       .on("pointerover", () => {
         this.direita.setFrame(1);
-        this.Tyler.setVelocityX(200);
-        this.Tyler.anims.play("Tyler-A-direita");
+        this.jogador_1.setVelocityX(200);
+        this.jogador_1.anims.play("jogador_1-A-direita");
       })
       .on("pointerout", () => {
         this.direita.setFrame(0);
-        this.Tyler.setVelocityX(0);
-        this.Tyler.anims.play("Tyler-A-parado");
+        this.jogador_1.setVelocityX(0);
+        this.jogador_1.anims.play("jogador_1-A-parado");
       })
       .setScrollFactor(0);
 
@@ -227,7 +232,7 @@ export default class principal extends Phaser.Scene {
 
     /* Colisão entre personagem 1 e mapa (por layer) */
     this.physics.add.collider(
-      this.Tyler,
+      this.jogador_1,
       this.bloco,
       this.collision,
       null,
@@ -235,16 +240,16 @@ export default class principal extends Phaser.Scene {
     );
 
     /* Colisão com os limites da cena */
-    this.Tyler.setCollideWorldBounds(true);
+    this.jogador_1.setCollideWorldBounds(true);
 
     /* Cena (1920x1920) maior que a tela (800x450) */
     this.cameras.main.setBounds(0, 0, 1920, 1920);
     this.physics.world.setBounds(0, 0, 1920, 1920);
-    this.cameras.main.startFollow(this.Tyler);
+    this.cameras.main.startFollow(this.jogador_1);
 
     /* Colisão com objeto */
     this.physics.add.collider(
-      this.Tyler,
+      this.jogador_1,
       this.chave,
       this.coletar_chave,
       null,
@@ -252,14 +257,25 @@ export default class principal extends Phaser.Scene {
     );
   }
 
-  upload() {}
+  update() {
+    let frame;
+    try {
+      frame = this.jogador_1.anims.getFrameName();
+    } catch (e) {
+      frame = 0;
+    }
+    this.game.socket.emit("estado-publicar", this.game.sala, {
+      frame: frame,
+      x: this.jogador_1.body.x + 32,
+      y: this.jogador_1.body.y + 32,
+    });
+  }
 
   collision() {
     /* Tremer a tela por 100 ms com baixa intensidade (0.01) */
-    this.cameras.main.shake(100, 0.01);
-
+    //this.cameras.main.shake(100, 0.01);
     /* Vibrar o celular pelos mesmos 100 ms */
-    window.navigator.vibrate([100]);
+    //window.navigator.vibrate([100]);
   }
 
   coletar_chave() {

@@ -26,7 +26,7 @@ export default class abertura extends Phaser.Scene {
         this.cima.setFrame(1);
         this.imagem.destroy();
         this.cima.destroy();
-        this.game.scene.start("principal");
+        this.game.scene.start("sala");
       });
   }
 
