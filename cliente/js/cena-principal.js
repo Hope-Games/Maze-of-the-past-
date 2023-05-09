@@ -139,18 +139,38 @@ export default class principal extends Phaser.Scene {
       repeat: -1,
     });
 
-    /* */
-    this.chave = this.physics.add.sprite(560, 350, "chave");
-
+    /* Chaves */
+    this.som_chave = this.sound.add("som-chave");
     this.anims.create({
       key: "chave-pulando",
-      frames: this.anims.generateFrameNumbers("chave", { start: 0, end: 1 }),
+      frames: this.anims.generateFrameNumbers("chave", {
+        start: 0,
+        end: 1,
+      }),
       frameRate: 4,
       repeat: -1,
     });
 
-    this.chave.anims.play("chave-pulando");
-    this.som_chave = this.sound.add("som-chave");
+    this.chaves = [
+      {
+        x: 560,
+        y: 350,
+        objeto: undefined,
+      },
+    ];
+    this.chaves.forEach((item) => {
+      item.objeto = this.physics.add.sprite(item.x, item.y, "chave");
+      item.objeto.anims.play("chave-pulando");
+      this.physics.add.overlap(
+        this.jogador_1,
+        item.objeto,
+        this.coletar_chave,
+        null,
+        this
+      );
+    });
+
+    this.chaves_coletadas = 0;
 
     /* Botões */
     this.cima = this.add
@@ -246,15 +266,6 @@ export default class principal extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, 1920, 1920);
     this.physics.world.setBounds(0, 0, 1920, 1920);
     this.cameras.main.startFollow(this.jogador_1);
-
-    /* Colisão com objeto */
-    this.physics.add.collider(
-      this.jogador_1,
-      this.chave,
-      this.coletar_chave,
-      null,
-      this
-    );
   }
 
   update() {
@@ -278,8 +289,9 @@ export default class principal extends Phaser.Scene {
     //window.navigator.vibrate([100]);
   }
 
-  coletar_chave() {
-    this.chave.disableBody(true, true);
+  coletar_chave(jogador, chave) {
     this.som_chave.play();
+    chave.disableBody(true, true);
+    this.chaves_coletadas += 1;
   }
 }
