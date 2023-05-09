@@ -4,12 +4,20 @@ export default class sala extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("ifsc-sj-2014", "./assets/ifsc-sj-2014.png");
-    this.load.image("grade", "./assets/grade.png");
+    this.load.image("cena-sala", "./assets/abertura/cena_sala.png");
+    this.load.image("grade", "./assets/abertura/grade.png");
+    this.load.image("botao1", "./assets/abertura/sala_01.png");
+    this.load.image("botao2", "./assets/abertura/sala_02.png");
+    this.load.image("botao3", "./assets/abertura/sala_03.png");
+    this.load.image("botao4", "./assets/abertura/sala_04.png");
+    this.load.image("botao5", "./assets/abertura/sala_05.png");
+    this.load.image("botao6", "./assets/abertura/sala_06.png");
+    this.load.image("botao7", "./assets/abertura/sala_07.png");
+    this.load.image("botao8", "./assets/abertura/sala_08.png");
   }
 
   create() {
-    this.imagem = this.add.image(400, 225, "ifsc-sj-2014").setTint(0xcccccc);
+    this.imagem = this.add.image(400, 225, "cena-sala").setTint(0xcccccc);
     this.grade = this.add.tileSprite(400, 225, 600, 300, "grade");
     this.mensagem = this.add.text(100, 75, "Escolha uma sala para entrar:", {
       fontFamily: "monospace",
@@ -18,74 +26,58 @@ export default class sala extends Phaser.Scene {
     });
     this.salas = [
       {
-        numero: "0",
-        x: 150,
-        y: 125,
-        botao: undefined,
-      },
-      {
         numero: "1",
-        x: 150,
-        y: 175,
-        botao: undefined,
+        x: 250,
+        y: 150,
+        imagem: "botao1",
       },
       {
         numero: "2",
-        x: 150,
-        y: 225,
-        botao: undefined,
+        x: 250,
+        y: 215,
+        imagem: "botao2",
       },
       {
         numero: "3",
-        x: 150,
-        y: 275,
-        botao: undefined,
+        x: 250,
+        y: 285,
+        imagem: "botao3",
       },
       {
         numero: "4",
-        x: 150,
-        y: 325,
-        botao: undefined,
+        x: 250,
+        y: 350,
+        imagem: "botao4",
       },
       {
         numero: "5",
-        x: 450,
-        y: 125,
-        botao: undefined,
+        x: 500,
+        y: 150,
+        imagem: "botao5",
       },
       {
         numero: "6",
-        x: 450,
-        y: 175,
-        botao: undefined,
+        x: 500,
+        y: 215,
+        imagem: "botao6",
       },
       {
         numero: "7",
-        x: 450,
-        y: 225,
-        botao: undefined,
+        x: 500,
+        y: 285,
+        imagem: "botao7",
       },
       {
         numero: "8",
-        x: 450,
-        y: 275,
-        botao: undefined,
-      },
-      {
-        numero: "9",
-        x: 450,
-        y: 325,
-        botao: undefined,
+        x: 500,
+        y: 350,
+        imagem: "botao8",
       },
     ];
 
     this.salas.forEach((item) => {
       item.botao = this.add
-        .text(item.x, item.y, "[Sala " + item.numero + "]", {
-          fontFamily: "monospace",
-          font: "32px Courier",
-          fill: "#cccccc",
-        })
+        .image(item.x, item.y, item.imagem)
         .setInteractive()
         .on("pointerdown", () => {
           this.salas.forEach((item) => {

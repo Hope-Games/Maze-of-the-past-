@@ -9,8 +9,8 @@ export default class abertura extends Phaser.Scene {
 
     /* Botões */
     this.load.spritesheet("botao_start", "./assets/abertura/botao_start.png", {
-      frameWidth: 64,
-      frameHeight: 64,
+      frameWidth: 128,
+      frameHeight: 128,
     });
   }
 
