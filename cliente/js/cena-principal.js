@@ -157,6 +157,26 @@ export default class principal extends Phaser.Scene {
         y: 350,
         objeto: undefined,
       },
+      {
+        x: 2000,
+        y: 1000,
+        objeto: undefined,
+      },
+      {
+        x: 1500,
+        y: 1000,
+        objeto: undefined,
+      },
+      {
+        x: 4000,
+        y: 6000,
+        objeto: undefined,
+      },
+      {
+        x: 3000,
+        y: 3500,
+        objeto: undefined,
+      },
     ];
     this.chaves.forEach((item) => {
       item.objeto = this.physics.add.sprite(item.x, item.y, "chave");
@@ -266,6 +286,13 @@ export default class principal extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, 1920, 1920);
     this.physics.world.setBounds(0, 0, 1920, 1920);
     this.cameras.main.startFollow(this.jogador_1);
+
+    this.game.socket.on("artefatos-notificar", (artefatos) => {
+      if (artefatos.chaves) {
+        this.chaves += artefatos.chaves;
+        console.log(this.chaves)
+      }
+    });
   }
 
   update() {
@@ -293,5 +320,8 @@ export default class principal extends Phaser.Scene {
     this.som_chave.play();
     chave.disableBody(true, true);
     this.chaves_coletadas += 1;
+    this.game.socket.emit("artefatos-publicar", this.game.sala, {
+      chaves: this.chaves_coletadas,
+    });
   }
 }
