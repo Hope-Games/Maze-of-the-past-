@@ -287,10 +287,16 @@ export default class principal extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, 1920, 1920);
     this.cameras.main.startFollow(this.jogador_1);
 
+    this.game.socket.on("estado-notificar", ({ frame, x, y }) => {
+      this.jogador_2.setFrame(frame);
+      this.jogador_2.x = x;
+      this.jogador_2.y = y;
+    });
+
     this.game.socket.on("artefatos-notificar", (artefatos) => {
       if (artefatos.chaves) {
         this.chaves += artefatos.chaves;
-        console.log(this.chaves)
+        console.log(this.chaves);
       }
     });
   }
