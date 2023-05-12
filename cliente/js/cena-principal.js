@@ -29,6 +29,12 @@ export default class principal extends Phaser.Scene {
       frameHeight: 64,
     });
 
+    /*Pergaminho */
+    this.load.spritesheet("pergaminho", "./assets/icones/pergaminho.png", {
+      frameWidth: 64,
+      frameHeight: 64,
+    });
+
     /*Botões */
     this.load.spritesheet("cima", "./assets/botões/cima.png", {
       frameWidth: 64,
@@ -62,6 +68,7 @@ export default class principal extends Phaser.Scene {
     this.trilha = this.sound.add("trilha");
     this.trilha.loop = true;
     this.trilha.play();
+    this.mensagem = 0;
 
     /* Tilemap */
     this.mapa = this.make.tilemap({
@@ -89,6 +96,20 @@ export default class principal extends Phaser.Scene {
       this.local = "Derek";
       this.jogador_1 = this.physics.add.sprite(1820, 2000, this.local);
     }
+
+    //Charada
+    this.mensagem = this.physics.add.sprite(100, 200, "pergaminho");
+    this.mensagem.body.setAllowGravity(false);
+    this.anims.create({
+      key: "pergaminho-abrindo",
+      frames: this.anims.generateFrameNumbers("pergaminho", {
+        start: 0,
+        end: 3,
+      }),
+      frameRate: 4,
+      repeat: -1,
+    });
+    this.mensagem.play("pergaminho-abrindo");
 
     this.anims.create({
       key: "jogador_1-A-parado",
@@ -279,6 +300,24 @@ export default class principal extends Phaser.Scene {
       this
     );
 
+    // Colisão para ativar as falas
+    this.physics.add.overlap(
+      this.jogador_1,
+      this.invisivel,
+      this.mensagem1,
+      null,
+      this
+    );
+
+    // Colisão para desativar as falas
+    this.physics.add.overlap(
+      this.jogador_1,
+      this.invisivel2,
+      this.mensagem1_0,
+      null,
+      this
+    );
+
     /* Colisão com os limites da cena */
     this.jogador_1.setCollideWorldBounds(true);
 
@@ -290,7 +329,7 @@ export default class principal extends Phaser.Scene {
     this.game.socket.on("artefatos-notificar", (artefatos) => {
       if (artefatos.chaves) {
         this.chaves += artefatos.chaves;
-        console.log(this.chaves)
+        console.log(this.chaves);
       }
     });
   }
@@ -307,6 +346,13 @@ export default class principal extends Phaser.Scene {
       x: this.jogador_1.body.x + 32,
       y: this.jogador_1.body.y + 32,
     });
+  }
+
+  mensagem1() {
+    this.mensagem.enableBody(true, 700, 450, true, true);
+  }
+  mensagem1_0() {
+    this.mensagem.disableBody(true, true);
   }
 
   collision() {
