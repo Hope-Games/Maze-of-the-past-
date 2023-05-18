@@ -179,8 +179,8 @@ export default class principal extends Phaser.Scene {
         objeto: undefined,
       },
       {
-        x: 2000,
-        y: 1000,
+        x: 100,
+        y: 400,
         objeto: undefined,
       },
       {
@@ -189,13 +189,13 @@ export default class principal extends Phaser.Scene {
         objeto: undefined,
       },
       {
-        x: 4000,
-        y: 6000,
+        x: 650,
+        y: 800,
         objeto: undefined,
       },
       {
-        x: 3000,
-        y: 3500,
+        x: 1820,
+        y: 500,
         objeto: undefined,
       },
     ];
