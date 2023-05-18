@@ -332,7 +332,15 @@ export default class principal extends Phaser.Scene {
 
     this.game.socket.on("artefatos-notificar", (artefatos) => {
       for (let i = 0; i < artefatos.length; i++) {
-        if (!artefatos[i]) {
+        if (artefatos[i]) {
+          this.chaves[i].objeto.enableBody(
+            false,
+            this.chaves[i].x,
+            this.chaves[i].y,
+            true,
+            true
+          );
+        } else {
           this.chaves[i].objeto.disableBody(true, true);
         }
       }
@@ -373,7 +381,7 @@ export default class principal extends Phaser.Scene {
     this.game.socket.emit(
       "artefatos-publicar",
       this.game.sala,
-      this.game.scene.scenes[2].chaves.map((chave) => chave.objeto.visible)
+      this.chaves.map((chave) => chave.objeto.visible)
     );
   }
 }
