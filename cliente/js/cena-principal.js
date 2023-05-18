@@ -94,7 +94,7 @@ export default class principal extends Phaser.Scene {
       this.remoto = "Tyler";
       this.jogador_2 = this.add.sprite(100, 50, this.remoto);
       this.local = "Derek";
-      this.jogador_1 = this.physics.add.sprite(1820, 2000, this.local);
+      this.jogador_1 = this.physics.add.sprite(650, 350, this.local);
     }
 
     //Charada
@@ -331,14 +331,10 @@ export default class principal extends Phaser.Scene {
     });
 
     this.game.socket.on("artefatos-notificar", (artefatos) => {
-      if (artefatos.chaves) {
-        /* Sincroniza as chavess */
-        this.chaves = artefatos.chaves;
-        this.chaves.forEach((chave) => {
-          if (!chave.objeto.visible) {
-            chave.disableBody(true, true);
-          }
-        });
+      for (let i = 0; i < artefatos.length; i++) {
+        if (!artefatos[i]) {
+          this.chaves[i].objeto.disableBody(true, true);
+        }
       }
     });
   }
@@ -374,6 +370,10 @@ export default class principal extends Phaser.Scene {
   coletar_chave(jogador, chave) {
     this.som_chave.play();
     chave.disableBody(true, true);
-    this.game.socket.emit("artefatos-publicar", this.game.sala, this.chaves);
+    this.game.socket.emit(
+      "artefatos-publicar",
+      this.game.sala,
+      this.game.scene.scenes[2].chaves.map((chave) => chave.objeto.visible)
+    );
   }
 }
