@@ -25,8 +25,8 @@ class Game extends Phaser.Game {
     this.scene.add("abertura", abertura);
     this.scene.add("sala", sala);
     this.scene.add("principal", principal);
-    //this.scene.add("fim-do-jogo", fim_do_jogo);
-    //this.scene.add("final-feliz", final_feliz);
+    this.scene.add("fim-do-jogo", fim_do_jogo);
+    this.scene.add("final-feliz", final_feliz);
     //
     // Inciar pela cena de abertura
     this.scene.start("abertura");
