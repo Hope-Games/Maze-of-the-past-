@@ -5,11 +5,14 @@ export default class principal extends Phaser.Scene {
 
   preload() {
     /* Tilemap */
-    this.load.tilemapTiledJSON("mapa", "./assets/mapa.json");
+    this.load.tilemapTiledJSON("interior", "./assets/mapa-novo/interior.json");
 
     /* Tilesets */
-    this.load.image("bloco", "./assets/bloco.png");
-    this.load.image("chao", "./assets/chao.png");
+    this.load.image("interior", "./assets/mapa-novo/interior.png");
+    this.load.image("misc", "./assets/mapa-novo/misc.png");
+    this.load.image("comodo", "./assets/mapa-novo/comodo.png");
+    this.load.image("objetos", "./assets/mapa-novo/objetos.png");
+    this.load.image("flores", "./assets/mapa-novo/flores.png");
 
     /* Personagem 1: Tyler */
     this.load.spritesheet("Tyler", "./assets/personagens/Tyler.png", {
@@ -72,18 +75,55 @@ export default class principal extends Phaser.Scene {
 
     /* Tilemap */
     this.mapa = this.make.tilemap({
-      key: "mapa",
+      key: "interior",
     });
 
     /* Tilesets */
-    this.tileset_mapa_bloco = this.mapa.addTilesetImage("bloco", "bloco");
-    this.tileset_mapa_chao = this.mapa.addTilesetImage("chao", "chao");
+    this.tileset_interior = this.mapa.addTilesetImage("interior", "interior");
+    this.tileset_misc = this.mapa.addTilesetImage("misc", "misc");
+    this.tileset_comodo = this.mapa.addTilesetImage("comodo", "comodo");
+    this.tileset_objetos = this.mapa.addTilesetImage("objetos", "objetos");
+    this.tileset_flores = this.mapa.addTilesetImage("flores", "flores");
 
-    /* chão */
-    this.chao = this.mapa.createLayer("chao", this.tileset_mapa_chao, 0, 0);
+    /* Camadas (layers) */
+    this.fundo = this.mapa.createLayer(
+      "fundo",
+      [
+        this.tileset_interior,
+        this.tileset_misc,
+        this.tileset_comodo,
+        this.tileset_objetos,
+        this.tileset_flores,
+      ],
+      0,
+      0
+    );
 
-    /* bloco */
-    this.bloco = this.mapa.createLayer("bloco", this.tileset_mapa_bloco, 0, 0);
+    this.comodos = this.mapa.createLayer(
+      "comodos",
+      [
+        this.tileset_interior,
+        this.tileset_misc,
+        this.tileset_comodo,
+        this.tileset_objetos,
+        this.tileset_flores,
+      ],
+      0,
+      0
+    );
+
+    this.objetos = this.mapa.createLayer(
+      "objetos",
+      [
+        this.tileset_interior,
+        this.tileset_misc,
+        this.tileset_comodo,
+        this.tileset_objetos,
+        this.tileset_flores,
+      ],
+      0,
+      0
+    );
 
     if (this.game.jogadores.primeiro === this.game.socket.id) {
       this.local = "Tyler";
@@ -286,17 +326,15 @@ export default class principal extends Phaser.Scene {
       })
       .setScrollFactor(0);
 
-    /* Colisões por tile */
-    this.bloco.setCollisionByProperty({ collides: true });
+    /* Colisões por camada */
+    this.fundo.setCollisionByProperty({ collides: true });
+    this.comodos.setCollisionByProperty({ collides: true });
+    this.objetos.setCollisionByProperty({ collides: true });
 
     /* Colisão entre personagem 1 e mapa (por layer) */
-    this.physics.add.collider(
-      this.jogador_1,
-      this.bloco,
-      this.collision,
-      null,
-      this
-    );
+    this.physics.add.collider(this.jogador_1, this.fundo, null, null, this);
+    this.physics.add.collider(this.jogador_1, this.comodos, null, null, this);
+    this.physics.add.collider(this.jogador_1, this.objetos, null, null, this);
 
     // Colisão para ativar as falas
     this.physics.add.overlap(
