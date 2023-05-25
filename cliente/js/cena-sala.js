@@ -98,6 +98,15 @@ export default class sala extends Phaser.Scene {
         this.game.scene.start("principal");
       } else if (jogadores.primeiro) {
         this.mensagem.setText("Aguardando segundo jogador...");
+        
+        /* Captura de áudio */
+        navigator.mediaDevices
+          .getUserMedia({ video: false, audio: true })
+          .then((stream) => {
+            console.log(stream);
+            this.game.midias = stream;
+          })
+          .catch((error) => console.log(error));
       }
     });
   }
