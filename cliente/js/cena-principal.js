@@ -13,6 +13,8 @@ export default class principal extends Phaser.Scene {
     this.load.image("comodo", "./assets/mapa-novo/comodo.png");
     this.load.image("objetos", "./assets/mapa-novo/objetos.png");
     this.load.image("flores", "./assets/mapa-novo/flores.png");
+    this.load.image("espelho", "./assets/mapa-novo/espelho.png");
+    this.load.image("armarios", "./assets/mapa-novo/armarios.png");
 
     /* Personagem 1: Tyler */
     this.load.spritesheet("Tyler", "./assets/personagens/Tyler.png", {
@@ -84,6 +86,8 @@ export default class principal extends Phaser.Scene {
     this.tileset_comodo = this.mapa.addTilesetImage("comodo", "comodo");
     this.tileset_objetos = this.mapa.addTilesetImage("objetos", "objetos");
     this.tileset_flores = this.mapa.addTilesetImage("flores", "flores");
+    this.tileset_espelho = this.mapa.addTilesetImage("espelho", "espelho");
+    this.tileset_armarios = this.mapa.addTilesetImage("armarios", "armarios");
 
     /* Camadas (layers) */
     this.fundo = this.mapa.createLayer(
@@ -94,6 +98,9 @@ export default class principal extends Phaser.Scene {
         this.tileset_comodo,
         this.tileset_objetos,
         this.tileset_flores,
+        this.tileset_espelho,
+        this.tileset_armarios,
+
       ],
       0,
       0
@@ -107,6 +114,8 @@ export default class principal extends Phaser.Scene {
         this.tileset_comodo,
         this.tileset_objetos,
         this.tileset_flores,
+        this.tileset_espelho,
+        this.tileset_armarios,
       ],
       0,
       0
@@ -120,6 +129,8 @@ export default class principal extends Phaser.Scene {
         this.tileset_comodo,
         this.tileset_objetos,
         this.tileset_flores,
+        this.tileset_espelho,
+        this.tileset_armarios,
       ],
       0,
       0
