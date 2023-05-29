@@ -100,7 +100,6 @@ export default class principal extends Phaser.Scene {
         this.tileset_flores,
         this.tileset_espelho,
         this.tileset_armarios,
-
       ],
       0,
       0
@@ -138,12 +137,12 @@ export default class principal extends Phaser.Scene {
 
     if (this.game.jogadores.primeiro === this.game.socket.id) {
       this.local = "Tyler";
-      this.jogador_1 = this.physics.add.sprite(100, 50, this.local);
+      this.jogador_1 = this.physics.add.sprite(150, 150, this.local);
       this.remoto = "Derek";
       this.jogador_2 = this.add.sprite(1820, 2000, this.remoto);
     } else {
       this.remoto = "Tyler";
-      this.jogador_2 = this.add.sprite(100, 50, this.remoto);
+      this.jogador_2 = this.add.sprite(150, 150, this.remoto);
       this.local = "Derek";
       this.jogador_1 = this.physics.add.sprite(650, 350, this.local);
 
