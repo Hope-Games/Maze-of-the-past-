@@ -3,9 +3,13 @@ export default class fim_do_jogo extends Phaser.Scene {
       super("fim-do-jogo");
     }
   
-    preload() {}
+  preload() {
+      //this.load.image()
+    }
   
-    create() {}
+  create() {
+      //this.add.image()
+    }
   
     upload() {}
   }

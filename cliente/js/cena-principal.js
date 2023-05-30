@@ -34,8 +34,8 @@ export default class principal extends Phaser.Scene {
       frameHeight: 64,
     });
 
-    /*Pergaminho */
-    this.load.spritesheet("pergaminho", "./assets/icones/pergaminho.png", {
+    /*Vazio */
+    this.load.spritesheet("vazio", "./assets/icones/vazio.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
@@ -245,18 +245,7 @@ export default class principal extends Phaser.Scene {
     });
 
     //Charada
-    this.mensagem = this.physics.add.sprite(100, 200, "pergaminho");
-    this.mensagem.body.setAllowGravity(false);
-    this.anims.create({
-      key: "pergaminho-abrindo",
-      frames: this.anims.generateFrameNumbers("pergaminho", {
-        start: 0,
-        end: 3,
-      }),
-      frameRate: 4,
-      repeat: -1,
-    });
-    this.mensagem.play("pergaminho-abrindo");
+    this.vazio = this.physics.add.sprite(778, 608, "vazio").setImmovable(true);
 
     this.anims.create({
       key: "jogador_1-A-parado",
@@ -452,6 +441,15 @@ export default class principal extends Phaser.Scene {
       this
     );
 
+    // Colisão com vazio para pergamimho
+    this.physics.add.collider(
+      this.jogador_1,
+      this.vazio,
+      this.charada,
+      null,
+      this
+    );
+
     // Colisão para desativar as falas
     this.physics.add.overlap(
       this.jogador_1,
@@ -493,17 +491,15 @@ export default class principal extends Phaser.Scene {
   }
 
   update() {
-    let frame;
     try {
-      frame = this.jogador_1.anims.getFrameName();
+      this.game.socket.emit("estado-publicar", this.game.sala, {
+        frame: this.jogador_1.anims.getFrameName(),
+        x: this.jogador_1.body.x + 32,
+        y: this.jogador_1.body.y + 32,
+      });
     } catch (e) {
-      frame = 0;
+      console.log(e);
     }
-    this.game.socket.emit("estado-publicar", this.game.sala, {
-      frame: frame,
-      x: this.jogador_1.body.x + 32,
-      y: this.jogador_1.body.y + 32,
-    });
   }
 
   mensagem1() {
@@ -528,5 +524,9 @@ export default class principal extends Phaser.Scene {
       this.game.sala,
       this.chaves.map((chave) => chave.objeto.visible)
     );
+  }
+
+  charada(jogador, vazio) {
+    //this.
   }
 }
