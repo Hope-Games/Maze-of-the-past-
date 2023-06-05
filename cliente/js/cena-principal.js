@@ -321,7 +321,7 @@ export default class principal extends Phaser.Scene {
       },
       {
         x: 1500,
-        y: 1000,
+        y: 100,
         objeto: undefined,
       },
       {
@@ -488,6 +488,15 @@ export default class principal extends Phaser.Scene {
         }
       }
     });
+
+    this.vazio = this.physics.add.sprite(2624, 160, "vazio").setImmovable(true);
+    this.physics.add.collider(
+      this.jogador_1,
+      this.vazio,
+      this.saltar_no_mapa,
+      null,
+      this
+    );
   }
 
   update() {
@@ -528,5 +537,23 @@ export default class principal extends Phaser.Scene {
 
   charada(jogador, vazio) {
     //this.
+  }
+
+  saltar_no_mapa(jogador, vazio) {
+    let coletadas = 0;
+    this.chaves
+      .map((chave) => chave.objeto.visible)
+      .forEach((chave) => {
+        if (!chave) coletadas += 1;
+      });
+
+    if (coletadas === this.chaves.length) {
+      this.cameras.main.fadeOut(250);
+      this.cameras.main.once("camerafadeoutcomplete", (camera) => {
+        camera.fadeIn(250);
+        this.jogador_1.x = 5000;
+        this.jogador_1.y = 1000;
+      });
+    }
   }
 }
