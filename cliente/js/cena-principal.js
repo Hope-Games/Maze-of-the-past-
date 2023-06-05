@@ -320,7 +320,7 @@ export default class principal extends Phaser.Scene {
         objeto: undefined,
       },
       {
-        x: 1500,
+        x: 100,
         y: 100,
         objeto: undefined,
       },
