@@ -29,6 +29,11 @@ export default class principal extends Phaser.Scene {
     });
 
     /* Artefato */
+    this.load.spritesheet("presente", "./assets/icones/presente.png", {
+      frameWidth: 64,
+      frameHeight: 64,
+    });
+
     this.load.spritesheet("chave", "./assets/icones/chave.png", {
       frameWidth: 64,
       frameHeight: 64,
@@ -137,7 +142,7 @@ export default class principal extends Phaser.Scene {
 
     if (this.game.jogadores.primeiro === this.game.socket.id) {
       this.local = "Tyler";
-      this.jogador_1 = this.physics.add.sprite(150, 150, this.local);
+      this.jogador_1 = this.physics.add.sprite(96, 160, this.local);
       this.remoto = "Derek";
       this.jogador_2 = this.add.sprite(1820, 2000, this.remoto);
     } else {
@@ -308,40 +313,40 @@ export default class principal extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.chaves = [
+    this.presentes = [
       {
-        x: 560,
-        y: 350,
+        x: 706,
+        y: 192,
         objeto: undefined,
       },
       {
-        x: 100,
-        y: 400,
+        x: 1010,
+        y: 640,
         objeto: undefined,
       },
       {
-        x: 100,
-        y: 100,
+        x: 3296,
+        y: 671,
         objeto: undefined,
       },
       {
-        x: 650,
-        y: 800,
+        x: 1856,
+        y: 192,
         objeto: undefined,
       },
       {
-        x: 1820,
-        y: 500,
+        x: 3104,
+        y: 416,
         objeto: undefined,
       },
     ];
-    this.chaves.forEach((item) => {
-      item.objeto = this.physics.add.sprite(item.x, item.y, "chave");
-      item.objeto.anims.play("chave-pulando");
+    this.presentes.forEach((item) => {
+      item.objeto = this.physics.add.sprite(item.x, item.y, "presente");
+      item.objeto.anims.play("presente-pulando");
       this.physics.add.overlap(
         this.jogador_1,
         item.objeto,
-        this.coletar_chave,
+        this.coletar_presente,
         null,
         this
       );
@@ -476,15 +481,15 @@ export default class principal extends Phaser.Scene {
     this.game.socket.on("artefatos-notificar", (artefatos) => {
       for (let i = 0; i < artefatos.length; i++) {
         if (artefatos[i]) {
-          this.chaves[i].objeto.enableBody(
+          this.presentes[i].objeto.enableBody(
             false,
-            this.chaves[i].x,
-            this.chaves[i].y,
+            this.presentes[i].x,
+            this.presentes[i].y,
             true,
             true
           );
         } else {
-          this.chaves[i].objeto.disableBody(true, true);
+          this.presentes[i].objeto.disableBody(true, true);
         }
       }
     });
