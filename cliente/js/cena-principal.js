@@ -441,9 +441,9 @@ export default class principal extends Phaser.Scene {
       .setScrollFactor(0);
 
     /* Colisões por camada */
-    this.fundo.setCollisionByProperty({ collides: false });
-    this.comodos.setCollisionByProperty({ collides: false });
-    this.objetos.setCollisionByProperty({ collides: false });
+    this.fundo.setCollisionByProperty({ collides: true });
+    this.comodos.setCollisionByProperty({ collides: true });
+    this.objetos.setCollisionByProperty({ collides: true });
 
     /* Colisão entre personagem 1 e mapa (por layer) */
     this.physics.add.collider(this.jogador_1, this.fundo, null, null, this);
@@ -481,8 +481,8 @@ export default class principal extends Phaser.Scene {
     this.jogador_1.setCollideWorldBounds(true);
 
     /* Cena (1920x1920) maior que a tela (800x450) */
-    this.cameras.main.setBounds(0, 0, 5120, 2528);
-    this.physics.world.setBounds(0, 0, 5120, 2528);
+    this.cameras.main.setBounds(0, 0, 5120, 2560);
+    this.physics.world.setBounds(0, 0, 5120, 2560);
     this.cameras.main.startFollow(this.jogador_1);
 
     this.game.socket.on("estado-notificar", ({ frame, x, y }) => {
