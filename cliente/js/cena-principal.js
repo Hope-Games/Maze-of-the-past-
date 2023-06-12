@@ -186,12 +186,12 @@ export default class principal extends Phaser.Scene {
       this.local = "Tyler";
       this.jogador_1 = this.physics.add.sprite(96, 160, this.local);
       this.remoto = "Derek";
-      this.jogador_2 = this.add.sprite(1820, 2000, this.remoto);
+      this.jogador_2 = this.add.sprite(95, 2300, this.remoto);
     } else {
       this.remoto = "Tyler";
-      this.jogador_2 = this.add.sprite(150, 150, this.remoto);
+      this.jogador_2 = this.add.sprite(96, 160, this.remoto);
       this.local = "Derek";
-      this.jogador_1 = this.physics.add.sprite(650, 350, this.local);
+      this.jogador_1 = this.physics.add.sprite(95, 2300, this.local);
 
       /* Captura de áudio */
       navigator.mediaDevices
@@ -446,9 +446,9 @@ export default class principal extends Phaser.Scene {
     this.objetos.setCollisionByProperty({ collides: true });
 
     /* Colisão entre personagem 1 e mapa (por layer) */
-    this.physics.add.collider(this.jogador_1, this.fundo, null, null, this);
-    this.physics.add.collider(this.jogador_1, this.comodos, null, null, this);
-    this.physics.add.collider(this.jogador_1, this.objetos, null, null, this);
+   //this.physics.add.collider(this.jogador_1, this.fundo, null, null, this);
+    //this.physics.add.collider(this.jogador_1, this.comodos, null, null, this);
+    //this.physics.add.collider(this.jogador_1, this.objetos, null, null, this);
 
     // Colisão para ativar as falas
     this.physics.add.overlap(
@@ -481,8 +481,8 @@ export default class principal extends Phaser.Scene {
     this.jogador_1.setCollideWorldBounds(true);
 
     /* Cena (1920x1920) maior que a tela (800x450) */
-    this.cameras.main.setBounds(0, 0, 3360, 1120);
-    this.physics.world.setBounds(0, 0, 3360, 1120);
+    this.cameras.main.setBounds(0, 0, 5120, 2528);
+    this.physics.world.setBounds(0, 0, 5120, 2528);
     this.cameras.main.startFollow(this.jogador_1);
 
     this.game.socket.on("estado-notificar", ({ frame, x, y }) => {
