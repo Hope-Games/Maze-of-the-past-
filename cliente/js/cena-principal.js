@@ -441,14 +441,14 @@ export default class principal extends Phaser.Scene {
       .setScrollFactor(0);
 
     /* Colisões por camada */
-    this.fundo.setCollisionByProperty({ collides: true });
-    this.comodos.setCollisionByProperty({ collides: true });
-    this.objetos.setCollisionByProperty({ collides: true });
+    this.fundo.setCollisionByProperty({ collides: false });
+    this.comodos.setCollisionByProperty({ collides: false });
+    this.objetos.setCollisionByProperty({ collides: false });
 
     /* Colisão entre personagem 1 e mapa (por layer) */
-   //this.physics.add.collider(this.jogador_1, this.fundo, null, null, this);
-    //this.physics.add.collider(this.jogador_1, this.comodos, null, null, this);
-    //this.physics.add.collider(this.jogador_1, this.objetos, null, null, this);
+    this.physics.add.collider(this.jogador_1, this.fundo, null, null, this);
+    this.physics.add.collider(this.jogador_1, this.comodos, null, null, this);
+    this.physics.add.collider(this.jogador_1, this.objetos, null, null, this);
 
     // Colisão para ativar as falas
     this.physics.add.overlap(
