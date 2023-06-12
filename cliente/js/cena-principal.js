@@ -140,6 +140,48 @@ export default class principal extends Phaser.Scene {
       0
     );
 
+    /* Presentes */
+    this.anims.create({
+      key: "coletar-presente",
+      frames: this.anims.generateFrameNumbers("presente", {
+        start: 0,
+        end: 3,
+      }),
+      frameRate: 4,
+    });
+
+    this.presentes = [
+      {
+        x: 706,
+        y: 192,
+        objeto: undefined,
+      },
+      {
+        x: 1010,
+        y: 640,
+        objeto: undefined,
+      },
+      {
+        x: 3296,
+        y: 671,
+        objeto: undefined,
+      },
+      {
+        x: 1856,
+        y: 192,
+        objeto: undefined,
+      },
+      {
+        x: 3104,
+        y: 416,
+        objeto: undefined,
+      },
+    ];
+
+    this.presentes.forEach((item) => {
+      item.objeto = this.physics.add.sprite(item.x, item.y, "presente");
+    });
+
     if (this.game.jogadores.primeiro === this.game.socket.id) {
       this.local = "Tyler";
       this.jogador_1 = this.physics.add.sprite(96, 160, this.local);
@@ -162,13 +204,6 @@ export default class principal extends Phaser.Scene {
             this.game.ice_servers
           );
 
-          /* Associação de mídia com conexão remota */
-          stream
-            .getTracks()
-            .forEach((track) =>
-              this.game.localConnection.addTrack(track, stream)
-            );
-
           /* Oferta de candidatos ICE */
           this.game.localConnection.onicecandidate = ({ candidate }) => {
             candidate &&
@@ -179,6 +214,13 @@ export default class principal extends Phaser.Scene {
           this.game.localConnection.ontrack = ({ streams: [stream] }) => {
             this.game.audio.srcObject = stream;
           };
+
+          /* Associação de mídia com conexão remota */
+          stream
+            .getTracks()
+            .forEach((track) =>
+              this.game.localConnection.addTrack(track, stream)
+            );
 
           /* Oferta de mídia */
           this.game.localConnection
@@ -201,14 +243,7 @@ export default class principal extends Phaser.Scene {
 
     /* Recebimento de oferta de mídia */
     this.game.socket.on("offer", (description) => {
-      this.game.remoteConnection = new RTCPeerConnection(this.ice_servers);
-
-      /* Associação de mídia com conexão remota */
-      this.game.midias
-        .getTracks()
-        .forEach((track) =>
-          this.game.remoteConnection.addTrack(track, this.game.midias)
-        );
+      this.game.remoteConnection = new RTCPeerConnection(this.game.ice_servers);
 
       /* Contraoferta de candidatos ICE */
       this.game.remoteConnection.onicecandidate = ({ candidate }) => {
@@ -217,10 +252,16 @@ export default class principal extends Phaser.Scene {
       };
 
       /* Associação com o objeto HTML de áudio */
-      let midias = this.game.midias;
-      this.game.remoteConnection.ontrack = ({ streams: [midias] }) => {
-        this.game.audio.srcObject = this.game.midias;
+      this.game.remoteConnection.ontrack = ({ streams: [midia] }) => {
+        this.game.audio.srcObject = midia;
       };
+
+      /* Associação de mídia com conexão remota */
+      this.game.midias
+        .getTracks()
+        .forEach((track) =>
+          this.game.remoteConnection.addTrack(track, this.game.midias)
+        );
 
       /* Contraoferta de mídia */
       this.game.remoteConnection
@@ -247,6 +288,16 @@ export default class principal extends Phaser.Scene {
     this.game.socket.on("candidate", (candidate) => {
       let conn = this.game.localConnection || this.game.remoteConnection;
       conn.addIceCandidate(new RTCIceCandidate(candidate));
+    });
+
+    this.presentes.forEach((item) => {
+      item.objeto.overlap = this.physics.add.overlap(
+        this.jogador_1,
+        item.objeto,
+        this.coletar_presente,
+        null,
+        this
+      );
     });
 
     //Charada
@@ -303,6 +354,7 @@ export default class principal extends Phaser.Scene {
 
     /* Chaves */
     this.som_chave = this.sound.add("som-chave");
+
     this.anims.create({
       key: "chave-pulando",
       frames: this.anims.generateFrameNumbers("chave", {
@@ -311,45 +363,6 @@ export default class principal extends Phaser.Scene {
       }),
       frameRate: 4,
       repeat: -1,
-    });
-
-    this.presentes = [
-      {
-        x: 706,
-        y: 192,
-        objeto: undefined,
-      },
-      {
-        x: 1010,
-        y: 640,
-        objeto: undefined,
-      },
-      {
-        x: 3296,
-        y: 671,
-        objeto: undefined,
-      },
-      {
-        x: 1856,
-        y: 192,
-        objeto: undefined,
-      },
-      {
-        x: 3104,
-        y: 416,
-        objeto: undefined,
-      },
-    ];
-    this.presentes.forEach((item) => {
-      item.objeto = this.physics.add.sprite(item.x, item.y, "presente");
-      item.objeto.anims.play("presente-pulando");
-      this.physics.add.overlap(
-        this.jogador_1,
-        item.objeto,
-        this.coletar_presente,
-        null,
-        this
-      );
     });
 
     /* Botões */
@@ -479,17 +492,26 @@ export default class principal extends Phaser.Scene {
     });
 
     this.game.socket.on("artefatos-notificar", (artefatos) => {
-      for (let i = 0; i < artefatos.length; i++) {
-        if (artefatos[i]) {
-          this.presentes[i].objeto.enableBody(
-            false,
-            this.presentes[i].x,
-            this.presentes[i].y,
-            true,
-            true
-          );
-        } else {
-          this.presentes[i].objeto.disableBody(true, true);
+      if (artefatos.chaves) {
+        for (let i = 0; i < artefatos.chaves.length; i++) {
+          if (artefatos.chaves[i]) {
+            this.chaves[i].objeto.enableBody(
+              false,
+              this.chaves[i].x,
+              this.chaves[i].y,
+              true,
+              true
+            );
+          } else {
+            this.chaves[i].objeto.disableBody(true, true);
+          }
+        }
+      }
+      if (artefatos.presentes) {
+        for (let i = 0; i < artefatos.presentes.length; i++) {
+          if (artefatos.presentes[i]) {
+            this.presentes[i].objeto.anims.play("coletar-presente");
+          }
         }
       }
     });
@@ -533,11 +555,17 @@ export default class principal extends Phaser.Scene {
   coletar_chave(jogador, chave) {
     this.som_chave.play();
     chave.disableBody(true, true);
-    this.game.socket.emit(
-      "artefatos-publicar",
-      this.game.sala,
-      this.chaves.map((chave) => chave.objeto.visible)
-    );
+    this.game.socket.emit("artefatos-publicar", this.game.sala, {
+      chaves: this.chaves.map((chave) => chave.objeto.visible),
+    });
+  }
+
+  coletar_presente(jogador, presente) {
+    presente.overlap.destroy();
+    presente.anims.play("coletar-presente");
+    this.game.socket.emit("artefatos-publicar", this.game.sala, {
+      presentes: this.presentes.map((presente) => presente.objeto.anims.isPlaying),
+    });
   }
 
   charada(jogador, vazio) {
