@@ -1,5 +1,5 @@
-const version = "1.2.0";
-const cacheName = "boidacarapreta.github.io";
+const version = "0.1.0";
+const cacheName = "ifsc.digital";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(cacheName));
