@@ -176,6 +176,31 @@ export default class principal extends Phaser.Scene {
         y: 416,
         objeto: undefined,
       },
+      {
+        x: 705,
+        y: 1632,
+        objeto: undefined,
+      },
+      {
+        x: 1014,
+        y: 2080,
+        objeto: undefined,
+      },
+      {
+        x: 3296,
+        y: 2112,
+        objeto: undefined,
+      },
+      {
+        x: 3104,
+        y: 1856,
+        objeto: undefined,
+      },
+      {
+        x: 1856,
+        y: 1632,
+        objeto: undefined,
+      },
     ];
 
     this.presentes.forEach((item) => {
@@ -369,7 +394,7 @@ export default class principal extends Phaser.Scene {
     this.cima = this.add
       .sprite(125, 330, "cima", 0)
       .setInteractive()
-      .on("pointerover", () => {
+      .on("pointerdown", () => {
         this.cima.setFrame(1);
         this.jogador_1.setVelocityY(-200);
         this.jogador_1.anims.play("jogador_1-A-cima");
@@ -384,7 +409,7 @@ export default class principal extends Phaser.Scene {
     this.baixo = this.add
       .sprite(120, 400, "baixo", 0)
       .setInteractive()
-      .on("pointerover", () => {
+      .on("pointerdown", () => {
         this.baixo.setFrame(1);
         this.jogador_1.setVelocityY(200);
         this.jogador_1.anims.play("jogador_1-A-baixo");
@@ -399,7 +424,7 @@ export default class principal extends Phaser.Scene {
     this.esquerda = this.add
       .sprite(60, 370, "esquerda", 0)
       .setInteractive()
-      .on("pointerover", () => {
+      .on("pointerdown", () => {
         this.esquerda.setFrame(1);
         this.jogador_1.setVelocityX(-200);
         this.jogador_1.anims.play("jogador_1-A-esquerda");
@@ -414,7 +439,7 @@ export default class principal extends Phaser.Scene {
     this.direita = this.add
       .sprite(190, 370, "direita", 0)
       .setInteractive()
-      .on("pointerover", () => {
+      .on("pointerdown", () => {
         this.direita.setFrame(1);
         this.jogador_1.setVelocityX(200);
         this.jogador_1.anims.play("jogador_1-A-direita");
@@ -564,7 +589,9 @@ export default class principal extends Phaser.Scene {
     presente.overlap.destroy();
     presente.anims.play("coletar-presente");
     this.game.socket.emit("artefatos-publicar", this.game.sala, {
-      presentes: this.presentes.map((presente) => presente.objeto.anims.isPlaying),
+      presentes: this.presentes.map(
+        (presente) => presente.objeto.anims.isPlaying
+      ),
     });
   }
 
