@@ -325,9 +325,6 @@ export default class principal extends Phaser.Scene {
       );
     });
 
-    //Charada
-    this.vazio = this.physics.add.sprite(778, 608, "vazio").setImmovable(true);
-
     this.anims.create({
       key: "jogador_1-A-parado",
       frames: this.anims.generateFrameNumbers(this.local, {
@@ -484,24 +481,6 @@ export default class principal extends Phaser.Scene {
       this
     );
 
-    // Colisão com vazio para pergamimho
-    this.physics.add.collider(
-      this.jogador_1,
-      this.vazio,
-      this.charada,
-      null,
-      this
-    );
-
-    // Colisão para desativar as falas
-    this.physics.add.overlap(
-      this.jogador_1,
-      this.invisivel2,
-      this.mensagem1_0,
-      null,
-      this
-    );
-
     /* Colisão com os limites da cena */
     this.jogador_1.setCollideWorldBounds(true);
 
@@ -541,7 +520,12 @@ export default class principal extends Phaser.Scene {
       }
     });
 
-    this.vazio = this.physics.add.sprite(2624, 160, "vazio").setImmovable(true);
+    this.vazio = this.physics.add.sprite(2649, 211, "vazio").setImmovable(true);
+
+    this.vazio2 = this.physics.add
+      .sprite(2649, 1632, "vazio")
+      .setImmovable(true);
+
     this.physics.add.collider(
       this.jogador_1,
       this.vazio,
@@ -593,10 +577,6 @@ export default class principal extends Phaser.Scene {
         (presente) => presente.objeto.anims.isPlaying
       ),
     });
-  }
-
-  charada(jogador, vazio) {
-    //this.
   }
 
   saltar_no_mapa(jogador, vazio) {
