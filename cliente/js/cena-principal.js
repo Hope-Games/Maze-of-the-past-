@@ -29,7 +29,7 @@ export default class principal extends Phaser.Scene {
     });
 
     /* Artefato */
-    this.load.spritesheet("presente", "./assets/icones/presente.png", {
+    this.load.spritesheet("presente", "./assets/icones/presente_chave.png", {
       frameWidth: 64,
       frameHeight: 64,
     });
@@ -145,61 +145,61 @@ export default class principal extends Phaser.Scene {
       key: "coletar-presente",
       frames: this.anims.generateFrameNumbers("presente", {
         start: 0,
-        end: 3,
+        end: 4,
       }),
-      frameRate: 4,
+      frameRate: 5,
+    });
+
+    this.anims.create({
+      key: "chave-pulando",
+      frames: this.anims.generateFrameNumbers("presente", {
+        start: 5,
+        end: 6,
+      }),
+      frameRate: 2,
+      repeat: -1,
     });
 
     this.presentes = [
       {
         x: 706,
         y: 192,
-        objeto: undefined,
       },
       {
         x: 1010,
         y: 640,
-        objeto: undefined,
       },
       {
         x: 3296,
         y: 671,
-        objeto: undefined,
       },
       {
         x: 1856,
         y: 192,
-        objeto: undefined,
       },
       {
         x: 3104,
         y: 416,
-        objeto: undefined,
       },
       {
         x: 705,
         y: 1632,
-        objeto: undefined,
       },
       {
         x: 1014,
         y: 2080,
-        objeto: undefined,
       },
       {
         x: 3296,
         y: 2112,
-        objeto: undefined,
       },
       {
         x: 3104,
         y: 1856,
-        objeto: undefined,
       },
       {
         x: 1856,
         y: 1632,
-        objeto: undefined,
       },
     ];
 
@@ -377,16 +377,6 @@ export default class principal extends Phaser.Scene {
     /* Chaves */
     this.som_chave = this.sound.add("som-chave");
 
-    this.anims.create({
-      key: "chave-pulando",
-      frames: this.anims.generateFrameNumbers("chave", {
-        start: 0,
-        end: 1,
-      }),
-      frameRate: 4,
-      repeat: -1,
-    });
-
     /* Botões */
     this.cima = this.add
       .sprite(125, 330, "cima", 0)
@@ -396,7 +386,7 @@ export default class principal extends Phaser.Scene {
         this.jogador_1.setVelocityY(-200);
         this.jogador_1.anims.play("jogador_1-A-cima");
       })
-      .on("pointerout", () => {
+      .on("pointerup", () => {
         this.cima.setFrame(0);
         this.jogador_1.setVelocityY(0);
         this.jogador_1.anims.play("jogador_1-A-parado");
@@ -411,7 +401,7 @@ export default class principal extends Phaser.Scene {
         this.jogador_1.setVelocityY(200);
         this.jogador_1.anims.play("jogador_1-A-baixo");
       })
-      .on("pointerout", () => {
+      .on("pointerup", () => {
         this.baixo.setFrame(0);
         this.jogador_1.setVelocityY(0);
         this.jogador_1.anims.play("jogador_1-A-parado");
@@ -426,7 +416,7 @@ export default class principal extends Phaser.Scene {
         this.jogador_1.setVelocityX(-200);
         this.jogador_1.anims.play("jogador_1-A-esquerda");
       })
-      .on("pointerout", () => {
+      .on("pointerup", () => {
         this.esquerda.setFrame(0);
         this.jogador_1.setVelocityX(0);
         this.jogador_1.anims.play("jogador_1-A-parado");
@@ -441,7 +431,7 @@ export default class principal extends Phaser.Scene {
         this.jogador_1.setVelocityX(200);
         this.jogador_1.anims.play("jogador_1-A-direita");
       })
-      .on("pointerout", () => {
+      .on("pointerup", () => {
         this.direita.setFrame(0);
         this.jogador_1.setVelocityX(0);
         this.jogador_1.anims.play("jogador_1-A-parado");
@@ -472,15 +462,6 @@ export default class principal extends Phaser.Scene {
     this.physics.add.collider(this.jogador_1, this.comodos, null, null, this);
     this.physics.add.collider(this.jogador_1, this.objetos, null, null, this);
 
-    // Colisão para ativar as falas
-    this.physics.add.overlap(
-      this.jogador_1,
-      this.invisivel,
-      this.mensagem1,
-      null,
-      this
-    );
-
     /* Colisão com os limites da cena */
     this.jogador_1.setCollideWorldBounds(true);
 
@@ -498,16 +479,8 @@ export default class principal extends Phaser.Scene {
     this.game.socket.on("artefatos-notificar", (artefatos) => {
       if (artefatos.chaves) {
         for (let i = 0; i < artefatos.chaves.length; i++) {
-          if (artefatos.chaves[i]) {
-            this.chaves[i].objeto.enableBody(
-              false,
-              this.chaves[i].x,
-              this.chaves[i].y,
-              true,
-              true
-            );
-          } else {
-            this.chaves[i].objeto.disableBody(true, true);
+          if (!artefatos.chaves[i]) {
+            this.presentes[i].objeto.disableBody(true, true);
           }
         }
       }
@@ -515,6 +488,21 @@ export default class principal extends Phaser.Scene {
         for (let i = 0; i < artefatos.presentes.length; i++) {
           if (artefatos.presentes[i]) {
             this.presentes[i].objeto.anims.play("coletar-presente");
+            this.presentes[i].objeto.overlap.destroy();
+            this.time.delayedCall(
+              1000,
+              () => {
+                this.presentes[i].objeto.overlap = this.physics.add.collider(
+                  this.jogador_1,
+                  this.presentes[i].objeto,
+                  this.coletar_chave,
+                  null,
+                  this
+                );
+              },
+              null,
+              this
+            );
           }
         }
       }
@@ -522,9 +510,9 @@ export default class principal extends Phaser.Scene {
 
     this.vazio = this.physics.add.sprite(2649, 211, "vazio").setImmovable(true);
 
-    this.vazio2 = this.physics.add
-      .sprite(2649, 1632, "vazio")
-      .setImmovable(true);
+    // this.vazio2 = this.physics.add
+    //   .sprite(2649, 1632, "vazio")
+    //   .setImmovable(true);
 
     this.physics.add.collider(
       this.jogador_1,
@@ -547,47 +535,48 @@ export default class principal extends Phaser.Scene {
     }
   }
 
-  mensagem1() {
-    this.mensagem.enableBody(true, 700, 450, true, true);
-  }
-  mensagem1_0() {
-    this.mensagem.disableBody(true, true);
-  }
-
-  collision() {
-    /* Tremer a tela por 100 ms com baixa intensidade (0.01) */
-    //this.cameras.main.shake(100, 0.01);
-    /* Vibrar o celular pelos mesmos 100 ms */
-    //window.navigator.vibrate([100]);
+  coletar_presente(jogador, presente) {
+    this.game.socket.emit("artefatos-publicar", this.game.sala, {
+      presentes: this.presentes.map(
+        (presente) => presente.objeto.anims.isPlaying
+      ),
+    });
+    presente.anims.play("coletar-presente");
+    presente.overlap.destroy();
+    this.time.delayedCall(
+      1000,
+      () => {
+        presente.anims.play("chave-pulando", true);
+        presente.overlap = this.physics.add.overlap(
+          this.jogador_1,
+          presente,
+          this.coletar_chave,
+          null,
+          this
+        );
+      },
+      null,
+      this
+    );
   }
 
   coletar_chave(jogador, chave) {
     this.som_chave.play();
     chave.disableBody(true, true);
     this.game.socket.emit("artefatos-publicar", this.game.sala, {
-      chaves: this.chaves.map((chave) => chave.objeto.visible),
-    });
-  }
-
-  coletar_presente(jogador, presente) {
-    presente.overlap.destroy();
-    presente.anims.play("coletar-presente");
-    this.game.socket.emit("artefatos-publicar", this.game.sala, {
-      presentes: this.presentes.map(
-        (presente) => presente.objeto.anims.isPlaying
-      ),
+      chaves: this.presentes.map((chave) => chave.objeto.visible),
     });
   }
 
   saltar_no_mapa(jogador, vazio) {
     let coletadas = 0;
-    this.chaves
+    this.presentes
       .map((chave) => chave.objeto.visible)
       .forEach((chave) => {
         if (!chave) coletadas += 1;
       });
 
-    if (coletadas === this.chaves.length) {
+    if (coletadas === this.presentes.length) {
       this.cameras.main.fadeOut(250);
       this.cameras.main.once("camerafadeoutcomplete", (camera) => {
         camera.fadeIn(250);
