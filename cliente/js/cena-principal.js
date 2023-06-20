@@ -580,8 +580,8 @@ export default class principal extends Phaser.Scene {
       this.cameras.main.fadeOut(250);
       this.cameras.main.once("camerafadeoutcomplete", (camera) => {
         camera.fadeIn(250);
-        this.jogador_1.x = 5000;
-        this.jogador_1.y = 1000;
+        this.jogador_1.x = 1000;
+        this.jogador_1.y = 500;
       });
     }
   }
