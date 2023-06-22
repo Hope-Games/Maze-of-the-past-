@@ -161,15 +161,15 @@ export default class principal extends Phaser.Scene {
     });
 
     this.presentes = [
-      {
+      /*{
         x: 706,
         y: 192,
-      },
+      },*/
       {
         x: 1010,
         y: 640,
       },
-      {
+      /*{
         x: 3296,
         y: 671,
       },
@@ -196,7 +196,7 @@ export default class principal extends Phaser.Scene {
       {
         x: 3104,
         y: 1856,
-      },
+      },*/
       {
         x: 1856,
         y: 1632,
@@ -466,8 +466,8 @@ export default class principal extends Phaser.Scene {
     this.jogador_1.setCollideWorldBounds(true);
 
     /* Cena (1920x1920) maior que a tela (800x450) */
-    this.cameras.main.setBounds(0, 0, 5120, 2560);
-    this.physics.world.setBounds(0, 0, 5120, 2560);
+    this.cameras.main.setBounds(0, 0, 5728, 2560);
+    this.physics.world.setBounds(0, 0, 5728, 2560);
     this.cameras.main.startFollow(this.jogador_1);
 
     this.game.socket.on("estado-notificar", ({ frame, x, y }) => {
@@ -508,19 +508,29 @@ export default class principal extends Phaser.Scene {
       }
     });
 
-    this.vazio = this.physics.add.sprite(2649, 211, "vazio").setImmovable(true);
+    this.vazio = [
+      {
+        x: 2649,
+        y: 211,
+      },
+      {
+        x: 2649,
+        y: 1632,
+      },
+    ];
+    this.vazio.forEach((vazio) => {
+      vazio.objeto = this.physics.add
+        .sprite(vazio.x, vazio.y, "vazio")
+        .setImmovable(true);
 
-    // this.vazio2 = this.physics.add
-    //   .sprite(2649, 1632, "vazio")
-    //   .setImmovable(true);
-
-    this.physics.add.collider(
-      this.jogador_1,
-      this.vazio,
-      this.saltar_no_mapa,
-      null,
-      this
-    );
+      this.physics.add.collider(
+        this.jogador_1,
+        vazio.objeto,
+        this.saltar_no_mapa,
+        null,
+        this
+      );
+    });
   }
 
   update() {
@@ -532,6 +542,16 @@ export default class principal extends Phaser.Scene {
       });
     } catch (e) {
       console.log(e);
+    }
+
+    if (
+      Phaser.Geom.Intersects.RectangleToRectangle(
+        this.jogador_1.getBounds(),
+        this.jogador_2.getBounds()
+      )
+    ) {
+      this.game.scene.stop("principal");
+      this.game.scene.start("fim-do-jogo");
     }
   }
 
@@ -580,8 +600,13 @@ export default class principal extends Phaser.Scene {
       this.cameras.main.fadeOut(250);
       this.cameras.main.once("camerafadeoutcomplete", (camera) => {
         camera.fadeIn(250);
-        this.jogador_1.x = 1000;
-        this.jogador_1.y = 500;
+        if (this.game.jogadores.primeiro === this.game.socket.id) {
+          this.jogador_1.x = 5664;
+          this.jogador_1.y = 1716;
+        } else {
+          this.jogador_1.x = 4224;
+          this.jogador_1.y = 1296;
+        }
       });
     }
   }

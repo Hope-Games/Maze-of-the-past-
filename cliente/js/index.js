@@ -8,7 +8,7 @@ import sala from "./cena-sala.js";
 // Cena principal
 import principal from "./cena-principal.js";
 // Cena de encerramento
-//import fim_do_jogo from "./cena-fim-do-jogo.js"
+import fim_do_jogo from "./cena-fim-do-jogo.js"
 //import final_feliz from "./cena-final-feliz.js"
 
 
@@ -18,7 +18,7 @@ class Game extends Phaser.Game {
 
     let iceServers;
     if (window.location.host === "ifsc.digital") {
-      this.socket = io.connect({ path: "/Maze-of-the-past-/socket.io" });
+      this.socket = io.connect({ path: "/Maze-of-the-past-/socket.io/" });
 
       iceServers = [
         {
@@ -50,7 +50,7 @@ class Game extends Phaser.Game {
     this.scene.add("abertura", abertura);
     this.scene.add("sala", sala);
     this.scene.add("principal", principal);
-    //this.scene.add("fim-do-jogo", fim_do_jogo);
+    this.scene.add("fim-do-jogo", fim_do_jogo);
     //this.scene.add("final-feliz", final_feliz);
     //
     // Inciar pela cena de abertura
