@@ -161,15 +161,15 @@ export default class principal extends Phaser.Scene {
     });
 
     this.presentes = [
-      /*{
+      {
         x: 706,
         y: 192,
-      },*/
+      },
       {
         x: 1010,
         y: 640,
       },
-      /*{
+      {
         x: 3296,
         y: 671,
       },
@@ -196,7 +196,7 @@ export default class principal extends Phaser.Scene {
       {
         x: 3104,
         y: 1856,
-      },*/
+      },
       {
         x: 1856,
         y: 1632,
